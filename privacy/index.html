@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Қолдау — Jannat Firdays</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --primary:#10B981;
+  --bg:#F9FAFB;
+  --card:#FFFFFF;
+  --text:#111827;
+  --soft:#6B7280;
+}
+
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#0F172A;
+    --card:#1E293B;
+    --text:#F8FAFC;
+    --soft:#CBD5E1;
+  }
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  font-family:'Inter',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.7;
+}
+
+.container{
+  max-width:720px;
+  margin:auto;
+  padding:60px 20px 80px;
+}
+
+h1{
+  font-size:34px;
+  font-weight:900;
+  margin-bottom:10px;
+}
+
+.subtitle{
+  color:var(--soft);
+  margin-bottom:40px;
+}
+
+.card{
+  background:var(--card);
+  padding:28px;
+  border-radius:20px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.05);
+  margin-bottom:25px;
+  transition:.3s ease;
+}
+
+.card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 20px 50px rgba(0,0,0,0.08);
+}
+
+.card h2{
+  font-size:18px;
+  margin-bottom:12px;
+  border-left:4px solid var(--primary);
+  padding-left:12px;
+}
+
+.card p{
+  color:var(--soft);
+  font-size:15px;
+  margin-bottom:10px;
+}
+
+.button{
+  display:inline-block;
+  background:var(--primary);
+  color:white;
+  padding:12px 22px;
+  border-radius:999px;
+  font-weight:600;
+  text-decoration:none;
+  margin-top:10px;
+}
+
+.footer{
+  text-align:center;
+  margin-top:60px;
+  color:var(--soft);
+  font-size:13px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Қолдау қызметі</h1>
+<div class="subtitle">Jannat Firdays қолданбасына қатысты сұрақтарыңыз болса, бізге хабарласыңыз.</div>
+
+<div class="card">
+<h2>Email арқылы байланыс</h2>
+<p>Сұрақтар, техникалық мәселелер немесе ұсыныстар бойынша бізге жазыңыз:</p>
+<p><strong>ermek.seidualy@gmail.com</strong></p>
+<a class="button" href="mailto:ermek.seidualy@gmail.com">Email жіберу</a>
+</div>
+
+<div class="card">
+<h2>Жиі қойылатын сұрақтар</h2>
+<p>• Намаз уақыты дұрыс шықпай тұр</p>
+<p>• Хабарландыру келмей жатыр</p>
+<p>• Қаланы өзгерту керек</p>
+<p>• Премиум сатып алу мәселесі</p>
+</div>
+
+<div class="card">
+<h2>Құпиялық саясаты</h2>
+<p>Құпиялық саясатын мына жерден оқи аласыз:</p>
+<a class="button" href="https://privacy.jannatfirdays.app">Қарау</a>
+</div>
+
+<div class="footer">
+© 2026 Jannat Firdays
+</div>
+
+</div>
+
+</body>
+</html>
