@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Құпиялық саясаты — Jannat Firdaus</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --primary:#059669;
+  --primary-hover:#047857;
+  --primary-soft:rgba(5,150,105,0.12);
+  --text:#0F172A;
+  --text-muted:#475569;
+  --bg:#FAFBFC;
+  --bg-mesh:rgba(5,150,105,0.04);
+  --card:#FFFFFF;
+  --card-border:rgba(0,0,0,0.06);
+  --radius:16px;
+  --radius-lg:24px;
+}
+
+@media (prefers-color-scheme: dark){
+  :root{
+    --text:#F1F5F9;
+    --text-muted:#94A3B8;
+    --bg:#0C0F14;
+    --bg-mesh:rgba(5,150,105,0.06);
+    --card:#151922;
+    --card-border:rgba(255,255,255,0.06);
+  }
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+
+html{scroll-behavior:smooth}
+
+body{
+  font-family:'DM Sans',system-ui,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+  min-height:100vh;
+}
+
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  background:radial-gradient(ellipse 100% 60% at 50% -10%,var(--bg-mesh),transparent 50%);
+  pointer-events:none;
+  z-index:0;
+}
+
+.container{
+  max-width:680px;
+  margin:0 auto;
+  padding:min(10vh,64px) 24px min(12vh,80px);
+  position:relative;
+  z-index:1;
+}
+
+.hero{
+  background:linear-gradient(135deg, #F0FDF4 0%, #ECFDF5 100%);
+  border:1px solid rgba(5,150,105,0.25);
+  border-radius:var(--radius);
+  padding:24px;
+  margin-bottom:32px;
+}
+
+@media (prefers-color-scheme: dark){
+  .hero{
+    background:linear-gradient(135deg, rgba(5,150,105,0.15) 0%, rgba(5,150,105,0.08) 100%);
+    border-color:rgba(5,150,105,0.35);
+  }
+}
+
+.hero h1{
+  font-family:'Outfit',sans-serif;
+  font-size:26px;
+  font-weight:800;
+  color:var(--text);
+  margin-bottom:6px;
+  letter-spacing:-0.02em;
+}
+
+.hero .subtitle{
+  font-size:14px;
+  font-weight:600;
+  color:var(--primary);
+  margin-bottom:16px;
+}
+
+.meta{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+.meta-row{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-size:12px;
+  font-weight:600;
+  color:var(--text-muted);
+}
+
+.meta-row svg{
+  flex-shrink:0;
+  width:14px;
+  height:14px;
+  opacity:0.8;
+}
+
+.intro{
+  font-size:15px;
+  color:var(--text);
+  line-height:1.75;
+  margin-bottom:36px;
+  padding:0 2px;
+}
+
+.section{
+  margin-bottom:28px;
+}
+
+.section-title{
+  font-family:'Outfit',sans-serif;
+  font-size:17px;
+  font-weight:700;
+  color:var(--text);
+  margin-bottom:12px;
+  padding-left:14px;
+  border-left:4px solid var(--primary);
+  letter-spacing:-0.02em;
+}
+
+.section p,
+.section .subsection{
+  font-size:14px;
+  color:var(--text-muted);
+  line-height:1.75;
+  margin-bottom:12px;
+}
+
+.section p:last-child,
+.section .subsection:last-child{margin-bottom:0}
+
+.subsection-title{
+  font-weight:700;
+  color:var(--text);
+  font-size:14px;
+  margin-bottom:6px;
+  margin-top:16px;
+}
+
+.subsection-title:first-child{margin-top:0}
+
+.section ul{
+  margin:8px 0 12px 20px;
+  padding:0;
+}
+
+.section li{
+  margin-bottom:4px;
+}
+
+.cta-bar{
+  margin-top:48px;
+  padding-top:24px;
+  border-top:1px solid var(--card-border);
+  text-align:center;
+}
+
+.btn-ok{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(90deg, var(--primary), #047857);
+  color:#fff;
+  padding:16px 40px;
+  border-radius:999px;
+  font-family:'Outfit',sans-serif;
+  font-size:16px;
+  font-weight:700;
+  text-decoration:none;
+  border:none;
+  cursor:pointer;
+  transition:opacity .2s, transform .2s;
+  box-shadow:0 4px 14px rgba(5,150,105,0.35);
+}
+
+.btn-ok:hover{
+  opacity:0.95;
+  transform:translateY(-2px);
+}
+
+.section a{
+  color:var(--primary);
+  text-decoration:none;
+  font-weight:600;
+}
+.section a:hover{ text-decoration:underline; }
+
+.footer{
+  margin-top:40px;
+  text-align:center;
+  font-size:13px;
+  color:var(--text-muted);
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <article class="hero">
+    <h1>Құпиялық саясаты</h1>
+    <p class="subtitle">(Privacy Policy) — Jannat Firdaus</p>
+    <div class="meta">
+      <div class="meta-row">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+        <span>Күшіне ену күні: 02.02.2026</span>
+      </div>
+      <div class="meta-row">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+        <span>Қосымша: Jannat Firdaus</span>
+      </div>
+      <div class="meta-row">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+        <span>Әзірлеуші: Ермек Сейдуалы</span>
+      </div>
+      <div class="meta-row">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        <span>Байланыс: support@jannatfirdaus.app</span>
+      </div>
+    </div>
+  </article>
+
+  <p class="intro">
+    Осы Құпиялық саясаты Jannat Firdaus қосымшасын (бұдан әрі — «Қосымша») пайдаланған кезде Сіздің жеке деректеріңіздің қалай өңделетінін түсіндіреді. Қосымшаны қолдану арқылы сіз осы саясат шарттарымен келісесіз.
+  </p>
+
+  <section class="section">
+    <h2 class="section-title">1) Біз жинайтын және өңдейтін деректер</h2>
+    <div class="subsection">
+      <p class="subsection-title">1.1. Орналасқан жер деректері (Location)</p>
+      <p>Қосымша намаз уақыттарын дәл анықтау және елдімекен/қала атауын көрсету үшін құрылғыңыздың орналасқан жеріне қол жеткізуге рұқсат сұрауы мүмкін.</p>
+      <p>Орналасқан жер деректері мына мақсатта қолданылады:</p>
+      <ul>
+        <li>намаз уақыттарын есептеу және көрсету;</li>
+        <li>елдімекен/қала атауын анықтау (reverse geocoding).</li>
+      </ul>
+      <p>Елдімекен атауын анықтау кезінде Қосымша OpenStreetMap деректеріне негізделген қызметтер арқылы сұрау жіберуі мүмкін (мысалы, координатаны елдімекен атауына сәйкестендіру үшін).</p>
+      <p><strong>Ескерту:</strong> Орналасқан жерге рұқсат берілмесе, намаз уақыттары мен елдімекен атауы дәл емес немесе қолмен таңдауды талап етуі мүмкін.</p>
+    </div>
+    <div class="subsection">
+      <p class="subsection-title">1.2. Хабарландырулар (Notifications)</p>
+      <p>Қосымша намаз уақыттары туралы еске салу/хабарландыру жіберу үшін хабарландыруларға рұқсат сұрайды.</p>
+      <p>Хабарландырулар мына мақсатта қолданылады:</p>
+      <ul>
+        <li>намаз уақыты кіргенін ескерту;</li>
+        <li>қолданба ішіндегі діни еске салғыштарды көрсету (егер қосылған болса).</li>
+      </ul>
+      <p>Қосымша хабарландыруларды жарнама немесе қажетсіз спам мақсатында пайдаланбайды.</p>
+    </div>
+    <div class="subsection">
+      <p class="subsection-title">1.3. Қосымша ішіндегі баптаулар және локалды деректер</p>
+      <p>Қосымшаның дұрыс жұмыс істеуі үшін кейбір деректер құрылғыңызда локалды түрде сақталуы мүмкін, мысалы:</p>
+      <ul>
+        <li>таңдалған қала/елдімекен немесе координатаға байланысты параметрлер;</li>
+        <li>намаз уақыттарына қатысты баптаулар;</li>
+        <li>хабарландыру параметрлері (қосулы/сөнулі, уақытқа байланысты таңдаулар);</li>
+        <li>интерфейс баптаулары (тіл, көрініс, т.б.);</li>
+        <li>зікір/салауат санағыштары мен қолданба ішіндегі прогресс (қолдансаңыз).</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">2) Деректерді қалай пайдаланамыз</h2>
+    <p>Жиналған және өңделген деректер тек келесі мақсаттарда қолданылады:</p>
+    <ul>
+      <li>намаз уақыттарын анықтау, есептеу және көрсету;</li>
+      <li>елдімекен/қала атауын көрсету (OpenStreetMap арқылы);</li>
+      <li>намаз уақыттары бойынша хабарландырулар жіберу;</li>
+      <li>қолданбаның тұрақты жұмысын қамтамасыз ету, қателерді түзету және пайдаланушы тәжірибесін жақсарту.</li>
+    </ul>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">3) Үшінші тарап қызметтері</h2>
+    <p>Қосымша кейбір функциялар үшін үшінші тарап дереккөздерін қолдануы мүмкін:</p>
+    <ul>
+      <li><strong>OpenStreetMap:</strong> елдімекен/қала атауын анықтауға және геодеректер логикасын орындауға көмектесетін дереккөзі/қызметтері.</li>
+    </ul>
+    <p>Үшінші тарапқа берілетін ақпарат тек қажетті минимуммен шектеледі (мысалы, координата бойынша елдімекен атауын анықтау үшін сұрау). Біз пайдаланушы деректерін сатпаймыз және жарнамалық мақсатта таратпаймыз.</p>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">4) Деректерді сақтау және қорғау</h2>
+    <ul>
+      <li>Қосымшадағы көптеген баптаулар мен есептер құрылғыңызда сақталуы мүмкін.</li>
+      <li>Біз деректер қауіпсіздігін сақтау үшін техникалық және ұйымдастырушылық шараларды қолдануға тырысамыз. Дегенмен интернет арқылы ақпарат алмасуда 100% қауіпсіздікке абсолют кепілдік беру мүмкін емес.</li>
+    </ul>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">5) Рұқсаттарды басқару (өшіру/өзгерту)</h2>
+    <p>Сіз кез келген уақытта рұқсаттарды өзгерте аласыз:</p>
+    <p><strong>iOS:</strong></p>
+    <ul>
+      <li>Settings → Privacy &amp; Security → Location Services → Jannat Firdaus</li>
+      <li>Settings → Notifications → Jannat Firdaus</li>
+    </ul>
+    <p>Рұқсаттарды өшірсеңіз, кейбір функциялар шектелуі мүмкін (мысалы, нақты намаз уақыты, автоматты елдімекен атауы, еске салғыштар).</p>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">6) Балалардың құпиялығы</h2>
+    <p>Қосымша кәмелетке толмағандардың деректерін әдейі жинауға бағытталмаған. Егер ата-ана немесе қамқоршы кәмелетке толмаған баланың деректері осы саясатқа қайшы өңделді деп есептесе, бізге хабарласуыңызды сұраймыз: <a href="mailto:support@jannatfirdaus.app">support@jannatfirdaus.app</a>.</p>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">7) Саясатқа өзгерістер енгізу</h2>
+    <p>Біз осы Құпиялық саясатын уақыт өте жаңарта аламыз. Жаңартылған нұсқа жарияланған сәттен бастап күшіне енеді. Өзгеріс енгізілген күні құжаттың басындағы «Күшіне ену күні» бөлімінде көрсетіледі.</p>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">8) Байланыс</h2>
+    <p>Құпиялыққа қатысты сұрақтар бойынша байланыс:</p>
+    <p>Әзірлеуші: Ермек Сейдуалы<br>Email: <a href="mailto:support@jannatfirdaus.app">support@jannatfirdaus.app</a></p>
+  </section>
+
+  <div class="cta-bar">
+    <a href="javascript:if(window.history.length>1)window.history.back();else window.location.href='https://jannatfirdaus.app';" class="btn-ok">Түсінікті</a>
+  </div>
+
+  <div class="footer">© 2026 Jannat Firdaus. Барлық құқықтар қорғалған.</div>
+
+</div>
+
+</body>
+</html>
