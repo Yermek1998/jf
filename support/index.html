@@ -1,1 +1,236 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Қолдау қызметі — Jannat Firdays</title>
 
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --primary:#059669;
+  --primary-hover:#047857;
+  --primary-glow:rgba(5,150,105,0.35);
+  --text:#0F172A;
+  --text-muted:#475569;
+  --bg:#FAFBFC;
+  --bg-mesh-1:rgba(5,150,105,0.04);
+  --bg-mesh-2:rgba(99,102,241,0.03);
+  --card:#FFFFFF;
+  --card-border:rgba(0,0,0,0.06);
+  --card-shadow:0 4px 6px -1px rgba(0,0,0,0.04),0 10px 20px -10px rgba(0,0,0,0.08);
+  --card-shadow-hover:0 25px 50px -12px rgba(0,0,0,0.12),0 0 0 1px rgba(0,0,0,0.04);
+  --radius:20px;
+  --radius-lg:28px;
+}
+
+@media (prefers-color-scheme: dark){
+  :root{
+    --text:#F1F5F9;
+    --text-muted:#94A3B8;
+    --bg:#0C0F14;
+    --bg-mesh-1:rgba(5,150,105,0.06);
+    --bg-mesh-2:rgba(99,102,241,0.05);
+    --card:#151922;
+    --card-border:rgba(255,255,255,0.06);
+    --card-shadow:0 4px 24px -4px rgba(0,0,0,0.4),0 0 0 1px rgba(255,255,255,0.04);
+    --card-shadow-hover:0 32px 64px -12px rgba(0,0,0,0.5),0 0 0 1px rgba(255,255,255,0.06);
+  }
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+
+html{ scroll-behavior:smooth; }
+
+body{
+  font-family:'DM Sans',system-ui,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  min-height:100vh;
+  position:relative;
+  overflow-x:hidden;
+}
+
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  background:
+    radial-gradient(ellipse 100% 80% at 50% -20%,var(--bg-mesh-1),transparent 50%),
+    radial-gradient(ellipse 80% 60% at 80% 50%,var(--bg-mesh-2),transparent 45%);
+  pointer-events:none;
+  z-index:0;
+}
+
+.container{
+  max-width:560px;
+  margin:0 auto;
+  padding:min(12vh,100px) 24px min(14vh,120px);
+  text-align:center;
+  position:relative;
+  z-index:1;
+  animation:fadeUp 1s cubic-bezier(0.22,1,0.36,1) forwards;
+}
+
+.logo-wrap{
+  margin-bottom:40px;
+}
+.logo-wrap img{
+  height:52px;
+  width:auto;
+  display:block;
+  margin:0 auto;
+  filter:drop-shadow(0 2px 8px rgba(0,0,0,0.06));
+}
+@media (prefers-color-scheme: dark){
+  .logo-wrap img{ filter:drop-shadow(0 2px 12px rgba(0,0,0,0.3)); }
+}
+.logo-wrap .logo-day{ display:block; }
+.logo-wrap .logo-night{ display:none; }
+@media (prefers-color-scheme: dark){
+  .logo-wrap .logo-day{ display:none; }
+  .logo-wrap .logo-night{ display:block; }
+}
+
+.overline{
+  font-family:'Outfit',sans-serif;
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--primary);
+  margin-bottom:12px;
+}
+
+h1{
+  font-family:'Outfit',sans-serif;
+  font-size:clamp(28px,5vw,38px);
+  font-weight:700;
+  letter-spacing:-0.03em;
+  line-height:1.2;
+  margin-bottom:16px;
+  color:var(--text);
+}
+
+.subtitle{
+  font-size:17px;
+  color:var(--text-muted);
+  margin-bottom:48px;
+  max-width:420px;
+  margin-left:auto;
+  margin-right:auto;
+  font-weight:400;
+}
+
+.card{
+  background:var(--card);
+  padding:48px 40px;
+  border-radius:var(--radius-lg);
+  border:1px solid var(--card-border);
+  box-shadow:var(--card-shadow);
+  transition:transform .4s cubic-bezier(0.22,1,0.36,1),box-shadow .4s ease,border-color .3s ease;
+}
+
+.card:hover{
+  transform:translateY(-4px);
+  box-shadow:var(--card-shadow-hover);
+}
+
+.email-wrap{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:14px 22px;
+  background:var(--bg);
+  border-radius:999px;
+  margin-bottom:24px;
+  border:1px solid var(--card-border);
+}
+
+.email{
+  font-family:'Outfit',sans-serif;
+  font-size:18px;
+  font-weight:600;
+  letter-spacing:-0.02em;
+  color:var(--text);
+}
+
+.button{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  background:var(--primary);
+  color:#fff;
+  padding:16px 32px;
+  border-radius:999px;
+  font-family:'Outfit',sans-serif;
+  font-size:15px;
+  font-weight:600;
+  text-decoration:none;
+  transition:background .25s ease,transform .25s ease,box-shadow .25s ease;
+  border:none;
+  cursor:pointer;
+}
+
+.button:hover{
+  background:var(--primary-hover);
+  transform:translateY(-2px);
+  box-shadow:0 12px 24px -8px var(--primary-glow);
+}
+
+.divider{
+  width:48px;
+  height:3px;
+  background:linear-gradient(90deg,var(--primary),transparent);
+  border-radius:999px;
+  margin:56px auto 32px;
+  opacity:.8;
+}
+
+.footer{
+  font-size:13px;
+  color:var(--text-muted);
+  font-weight:400;
+}
+
+@keyframes fadeUp{
+  from{ opacity:0; transform:translateY(24px); }
+  to{ opacity:1; transform:translateY(0); }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="logo-wrap">
+  <img class="logo-day" src="https://jannatfirdaus.app/icon_day.png" alt="Jannat Firdaus" />
+  <img class="logo-night" src="https://jannatfirdaus.app/icon_night.png" alt="Jannat Firdaus" />
+</div>
+
+<p class="overline">Қолдау</p>
+<h1>Қолдау қызметі</h1>
+
+<p class="subtitle">
+Jannat Firdays қолданбасына қатысты сұрақтарыңыз немесе техникалық мәселелер болса, бізге хабарласыңыз.
+</p>
+
+<div class="card">
+  <div class="email-wrap">
+    <span class="email">support@jannatfirdays.app</span>
+  </div>
+  <a class="button" href="mailto:support@jannatfirdays.app">Email жіберу</a>
+</div>
+
+<div class="divider" aria-hidden="true"></div>
+<div class="footer">© 2026 Jannat Firdays. Барлық құқықтар қорғалған.</div>
+
+</div>
+
+</body>
+</html>
