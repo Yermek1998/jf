@@ -1,0 +1,30 @@
+sensitivity 1.7
+zoom_sensitivity_ratio 0.8
+m_rawinput 1
+m_customaccel 0
+
+cl_crosshairstyle 4
+cl_crosshairsize 3
+cl_crosshairthickness 1
+cl_crosshairgap -2
+cl_crosshairdot 0
+cl_crosshair_drawoutline 0
+cl_crosshairalpha 255
+cl_crosshaircolor 1
+cl_crosshair_recoil 1
+
+viewmodel_fov 68
+viewmodel_offset_x 2.5
+viewmodel_offset_y 2
+viewmodel_offset_z -2
+viewmodel_presetpos 0
+
+fps_max 0
+r_drawtracers_firstperson 0
+cl_disable_ragdolls 1
+
+cl_radar_scale 0.35
+cl_hud_radar_scale 1.15
+cl_radar_always_centered 0
+cl_radar_rotate 1
+cl_radar_icon_scale_min 0.6
