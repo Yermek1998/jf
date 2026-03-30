@@ -3,10 +3,8 @@
     "apps": [],
     "details": [
       {
-        "appID": "TEAMID.BUNDLEID",
-        "paths": [
-          "/match/*"
-        ]
+        "appID": "ABCD123456.com.your.bundleid",
+        "paths": ["/match/*"]
       }
     ]
   }
