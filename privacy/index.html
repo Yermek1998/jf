@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Құпиялық саясаты — Jannat Firdaus</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --primary:#059669;
+  --primary-hover:#047857;
+  --primary-glow:rgba(5,150,105,0.4);
+  --primary-soft:rgba(5,150,105,0.12);
+  --text:#0F172A;
+  --text-muted:#475569;
+  --bg:#F8FAFC;
+  --bg-mesh-1:rgba(5,150,105,0.06);
+  --bg-mesh-2:rgba(99,102,241,0.04);
+  --card:#FFFFFF;
+  --card-border:rgba(0,0,0,0.06);
+  --card-shadow:0 4px 24px -8px rgba(0,0,0,0.08), 0 0 0 1px rgba(0,0,0,0.02);
+  --radius:18px;
+  --radius-lg:26px;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (prefers-color-scheme: dark){
+  :root{
+    --text:#F1F5F9;
+    --text-muted:#94A3B8;
+    --bg:#0A0D12;
+    --bg-mesh-1:rgba(5,150,105,0.08);
+    --bg-mesh-2:rgba(99,102,241,0.06);
+    --card:#12161E;
+    --card-border:rgba(255,255,255,0.06);
+    --card-shadow:0 8px 32px -8px rgba(0,0,0,0.45), 0 0 0 1px rgba(255,255,255,0.04);
+  }
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+
+html{scroll-behavior:smooth}
+
+body{
+  font-family:'DM Sans',system-ui,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+  min-height:100vh;
+  overflow-x:hidden;
+}
+
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  background:
+    radial-gradient(ellipse 120% 70% at 50% -15%, var(--bg-mesh-1), transparent 55%),
+    radial-gradient(ellipse 70% 50% at 100% 30%, var(--bg-mesh-2), transparent 50%);
+  pointer-events:none;
+  z-index:0;
+}
+
+.container{
+  max-width:660px;
+  margin:0 auto;
+  padding:min(8vh,56px) 24px min(12vh,96px);
+  position:relative;
+  z-index:1;
+}
+
+.logo-wrap{
+  text-align:center;
+  margin-bottom:32px;
+  animation: fadeInDown 0.8s var(--ease-out) forwards;
+  opacity:0;
+}
+.logo-wrap img{
+  height:52px;
+  width:auto;
+  display:inline-block;
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.08));
+}
+@media (prefers-color-scheme: dark){
+  .logo-wrap img{ filter: drop-shadow(0 4px 16px rgba(0,0,0,0.35)); }
+}
+.logo-wrap .logo-day{ display:inline-block; }
+.logo-wrap .logo-night{ display:none; }
+@media (prefers-color-scheme: dark){
+  .logo-wrap .logo-day{ display:none; }
+  .logo-wrap .logo-night{ display:inline-block; }
+}
+
+.hero{
+  background:linear-gradient(145deg, #F0FDF4 0%, #ECFDF5 50%, #D1FAE5 100%);
+  border:1px solid rgba(5,150,105,0.28);
+  border-radius:var(--radius-lg);
+  padding:28px 28px 26px;
+  margin-bottom:28px;
+  box-shadow: var(--card-shadow), 0 0 0 1px rgba(5,150,105,0.06);
+  animation: fadeInUp 0.9s var(--ease-out) 0.1s forwards;
+  opacity:0;
+  position:relative;
+  overflow:hidden;
+}
+.hero::after{
+  content:'';
+  position:absolute;
+  top:0;right:0;
+  width:180px;height:180px;
+  background:radial-gradient(circle, rgba(5,150,105,0.12) 0%, transparent 70%);
+  border-radius:50%;
+  transform:translate(30%,-30%);
+}
+@media (prefers-color-scheme: dark){
+  .hero{
+    background:linear-gradient(145deg, rgba(5,150,105,0.18) 0%, rgba(5,150,105,0.1) 50%, rgba(5,150,105,0.06) 100%);
+    border-color:rgba(5,150,105,0.4);
+    box-shadow: var(--card-shadow);
+  }
+  .hero::after{ background:radial-gradient(circle, rgba(5,150,105,0.15) 0%, transparent 70%); }
+}
+
+.hero h1{
+  font-family:'Outfit',sans-serif;
+  font-size:28px;
+  font-weight:800;
+  color:var(--text);
+  margin-bottom:6px;
+  letter-spacing:-0.03em;
+  position:relative;
+  z-index:1;
+}
+
+.hero .subtitle{
+  font-size:14px;
+  font-weight:600;
+  color:var(--primary);
+  margin-bottom:20px;
+  position:relative;
+  z-index:1;
+}
+
+.meta{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  position:relative;
+  z-index:1;
+}
+
+.meta-row{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-size:13px;
+  font-weight:600;
+  color:var(--text-muted);
+  padding:8px 12px;
+  background:rgba(255,255,255,0.6);
+  border-radius:12px;
+  border:1px solid rgba(5,150,105,0.1);
+  transition: transform 0.25s var(--ease-out), background 0.25s ease;
+}
+.meta-row:hover{
+  transform:translateX(4px);
+  background:rgba(255,255,255,0.85);
+}
+@media (prefers-color-scheme: dark){
+  .meta-row{ background:rgba(0,0,0,0.2); border-color:rgba(255,255,255,0.06); }
+  .meta-row:hover{ background:rgba(0,0,0,0.35); }
+}
+
+.meta-row svg{
+  flex-shrink:0;
+  width:16px;
+  height:16px;
+  opacity:0.85;
+  color:var(--primary);
+}
+
+.intro{
+  font-size:15px;
+  color:var(--text);
+  line-height:1.8;
+  margin-bottom:32px;
+  padding:22px 24px;
+  background:var(--card);
+  border-radius:var(--radius);
+  border:1px solid var(--card-border);
+  box-shadow: var(--card-shadow);
+  animation: fadeInUp 0.9s var(--ease-out) 0.2s forwards;
+  opacity:0;
+}
+
+.section{
+  margin-bottom:24px;
+  padding:26px 28px;
+  background:var(--card);
+  border-radius:var(--radius);
+  border:1px solid var(--card-border);
+  box-shadow: var(--card-shadow);
+  animation: fadeInUp 0.7s var(--ease-out) forwards;
+  opacity:0;
+  transition: transform 0.35s var(--ease-out), box-shadow 0.35s ease, border-color 0.3s ease;
+}
+.section:hover{
+  transform:translateY(-2px);
+  box-shadow: 0 12px 40px -12px rgba(0,0,0,0.12), 0 0 0 1px rgba(0,0,0,0.03);
+}
+@media (prefers-color-scheme: dark){
+  .section:hover{ box-shadow: 0 16px 48px -12px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.06); }
+}
+
+.section:nth-of-type(1){ animation-delay: 0.22s; }
+.section:nth-of-type(2){ animation-delay: 0.28s; }
+.section:nth-of-type(3){ animation-delay: 0.34s; }
+.section:nth-of-type(4){ animation-delay: 0.4s; }
+.section:nth-of-type(5){ animation-delay: 0.46s; }
+.section:nth-of-type(6){ animation-delay: 0.52s; }
+.section:nth-of-type(7){ animation-delay: 0.58s; }
+.section:nth-of-type(8){ animation-delay: 0.64s; }
+.section:nth-of-type(9){ animation-delay: 0.7s; }
+
+.section-title{
+  font-family:'Outfit',sans-serif;
+  font-size:18px;
+  font-weight:700;
+  color:var(--text);
+  margin-bottom:14px;
+  padding-left:16px;
+  border-left:4px solid var(--primary);
+  letter-spacing:-0.02em;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.section-title::before{
+  content:attr(data-num);
+  font-size:11px;
+  font-weight:800;
+  color:var(--primary);
+  background:var(--primary-soft);
+  padding:4px 8px;
+  border-radius:8px;
+  letter-spacing:0;
+}
+
+.section p,
+.section .subsection{
+  font-size:14px;
+  color:var(--text-muted);
+  line-height:1.78;
+  margin-bottom:12px;
+}
+
+.section p:last-child,
+.section .subsection:last-child{margin-bottom:0}
+
+.subsection-title{
+  font-weight:700;
+  color:var(--text);
+  font-size:14px;
+  margin-bottom:8px;
+  margin-top:18px;
+  padding:6px 0 4px;
+  border-bottom:1px dashed var(--card-border);
+}
+.subsection-title:first-child{margin-top:0}
+
+.section ul{
+  margin:10px 0 14px 22px;
+  padding:0;
+}
+
+.section li{
+  margin-bottom:6px;
+  position:relative;
+  padding-left:4px;
+}
+
+.section a{
+  color:var(--primary);
+  text-decoration:none;
+  font-weight:600;
+  transition: opacity 0.2s ease;
+}
+.section a:hover{ text-decoration:underline; opacity:0.9; }
+
+.footer{
+  margin-top:36px;
+  text-align:center;
+  font-size:13px;
+  color:var(--text-muted);
+  animation: fadeIn 0.8s var(--ease-out) 0.85s forwards;
+  opacity:0;
+}
+
+@keyframes fadeInDown{
+  from{ opacity:0; transform:translateY(-20px); }
+  to{ opacity:1; transform:translateY(0); }
+}
+@keyframes fadeInUp{
+  from{ opacity:0; transform:translateY(24px); }
+  to{ opacity:1; transform:translateY(0); }
+}
+@keyframes fadeIn{
+  from{ opacity:0; }
+  to{ opacity:1; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="logo-wrap">
+    <img class="logo-day" src="https://jannatfirdaus.app/icon_day.png" alt="Jannat Firdaus" />
+    <img class="logo-night" src="https://jannatfirdaus.app/icon_night.png" alt="Jannat Firdaus" />
+  </div>
+
+  <article class="hero">
+    <h1>Құпиялық саясаты</h1>
+    <p class="subtitle">(Privacy Policy) — Jannat Firdaus</p>
+    <div class="meta">
+      <div class="meta-row">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+        <span>Күшіне ену күні: 30.03.2026</span>
+      </div>
+      <div class="meta-row">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+        <span>Қосымша: Jannat Firdaus</span>
+      </div>
+      <div class="meta-row">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        <span>Байланыс: support@jannatfirdaus.app</span>
+      </div>
+    </div>
+  </article>
+
+  <p class="intro">
+    Осы Құпиялық саясаты Jannat Firdaus қосымшасын (бұдан әрі — «Қосымша») пайдаланған кезде жеке деректеріңіздің қалай өңделетінін түсіндіреді. Қосымшаны қолдану арқылы осы саясат шарттарымен келісесіз.
+  </p>
+
+  <section class="section">
+    <h2 class="section-title" data-num="1">Біз жинайтын және өңдейтін деректер</h2>
+
+    <div class="subsection">
+      <p class="subsection-title">1.1. Орналасу (Location)</p>
+      <p>Намаз уақыттарын дәл есептеу және елдімекен немесе қала атауын көрсету үшін Қосымша құрылғыңыздың орналасуына рұқсат сұрауы мүмкін.</p>
+      <p><strong>Маңызды:</strong> орналасу деректері негізінен Қосымша ішінде өңделеді. Сонымен қатар, намаз карточкасында ауа райы/жаңбыр күйін көрсету үшін координаталар Open-Meteo сервисіне жіберілуі мүмкін (weather_code сұрауы). Қосымша OpenStreetMap сияқты карталық/геокодтау қызметтерін пайдаланбайды.</p>
+      <p>Орналасу деректері мына мақсатта қолданылады:</p>
+      <ul>
+        <li>намаз уақыттарын есептеу және көрсету;</li>
+        <li>елдімекен/қала атауын Қосымша интерфейсінде көрсету (өңдеу құрылғы және Қосымша шеңберінде);</li>
+        <li>намаз карточкасында ауа райы/жаңбыр күйін көрсету (Open-Meteo API арқылы weather_code дерегін алу).</li>
+      </ul>
+      <p><strong>Ескерту:</strong> орналасуға рұқсат берілмесе, намаз уақыттары мен елдімекен атауы дәл емес болуы немесе қолмен таңдауды талап етуі мүмкін.</p>
+      <p>Ауа райы сұраныстары қысқа мерзімге құрылғыда кэштелуі мүмкін (өнімділік пен трафикті азайту үшін).</p>
+    </div>
+
+    <div class="subsection">
+      <p class="subsection-title">1.2. Хабарландырулар (Notifications)</p>
+      <p>Намаз уақыты және Қосымша ішіндегі еске салғыштар үшін хабарландыруларға рұқсат сұралады.</p>
+      <ul>
+        <li>намаз уақыты кіргенін ескерту;</li>
+        <li>қолданба ішіндегі діни еске салғыштар (қосылған болса).</li>
+      </ul>
+      <p>Хабарландырулар жарнама немесе спам мақсатында пайдаланылмайды.</p>
+    </div>
+
+    <div class="subsection">
+      <p class="subsection-title">1.3. Қосымша ішіндегі баптаулар және локалды деректер</p>
+      <p>Кейбір деректер құрылғыңызда локалды сақталуы мүмкін:</p>
+      <ul>
+        <li>таңдалған қала/елдімекен немесе орналасуға байланысты баптаулар;</li>
+        <li>намаз уақыты баптаулары;</li>
+        <li>хабарландыру параметрлері;</li>
+        <li>интерфейс баптаулары (тіл, т.б.);</li>
+        <li>зікір/салауат санағыштары және қолданба ішіндегі прогресс (қолдансаңыз).</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title" data-num="2">Тіркелу, профиль, фото және күнтізбе</h2>
+
+    <div class="subsection">
+      <p class="subsection-title">2.1. Анонимді тіркелу</p>
+      <p>Кейбір функциялар үшін Қосымша анонимді тіркелуді қолдануы мүмкін (мысалы, Firebase Anonymous Authentication). Аты-жөн, телефон немесе электрондық пошта міндетті емес. Пайдаланушыға техникалық идентификатор (UID) беріледі — қолданба функцияларын қамтамасыз ету үшін.</p>
+    </div>
+
+    <div class="subsection">
+      <p class="subsection-title">2.2. Фото кітапханасына қол жеткізу</p>
+      <p>Профиль аватары немесе контентті галереяға сақтау үшін «Фото» кітапханасына рұқсат сұралады.</p>
+      <ul>
+        <li>пайдаланушы таңдаған суретті аватар ретінде орнату;</li>
+        <li>айлық намаз кестесі сияқты контентті сурет ретінде сақтау (таңдасаңыз);</li>
+        <li>Қосымша ішінде таңдалған суретті көрсету.</li>
+      </ul>
+      <p>Барлық галереяны автоматты сканерлемейміз; тек сіз таңдаған немесе сақтауды растаған файлдар өңделеді.</p>
+    </div>
+
+    <div class="subsection">
+      <p class="subsection-title">2.3. Галереяға сурет сақтау</p>
+      <p>Сақтау тек сіздің келісіміңізбен; басқа фотосуреттер оқылмайды, серверге жүктелмейді және үшінші тарапқа берілмейді.</p>
+    </div>
+
+    <div class="subsection">
+      <p class="subsection-title">2.4. Күнтізбеге қосу</p>
+      <p>Діни күндерді құрылғы күнтізбесіне қосу мүмкіндігі ұсынылуы мүмкін. Тек сіз қосуды растаған оқиғалар жазылады; қалған күнтізбе оқылмайды және өзгертілмейді. Оқиға деректері біздің серверге жіберілмейді.</p>
+    </div>
+
+    <div class="subsection">
+      <p class="subsection-title">2.5. Профиль суреті</p>
+      <p>Таңдалған сурет Firebase немесе басқа бұлтқа UID-пен байланысты сақталуы мүмкін; қолданба ішінде көрсетілуі мүмкін (профиль, чат т.б.). Жарнама үшін сатылмайды.</p>
+    </div>
+
+    <div class="subsection">
+      <p class="subsection-title">2.6. Профильді өзгерту және жою</p>
+      <p>Профиль суретін кез келген уақытта өзгерту немесе жоюға болады. Жойылғаннан кейін қолданба ішінде көрсетілмейді.</p>
+    </div>
+
+    <div class="subsection">
+      <p class="subsection-title">2.7. Фото рұқсатын басқару (iOS)</p>
+      <p><strong>Settings → Privacy &amp; Security → Photos → Jannat Firdaus</strong> немесе <strong>Settings → Jannat Firdaus → Photos</strong>.</p>
+      <p>Рұқсат өшірілсе, аватар таңдау немесе галереяға сақтау шектелуі мүмкін; бұрын жүктелген сурет серверде қалуы мүмкін (жеке жойғанға дейін).</p>
+    </div>
+
+    <div class="subsection">
+      <p class="subsection-title">2.8. Деректер қауіпсіздігі</p>
+      <p>Серверде сақталған суреттер техникалық шаралармен қорғалады. Интернет арқылы берілетін ақпарат үшін абсолютті қауіпсіздікке кепілдік беру мүмкін емес.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title" data-num="3">Деректерді қалай пайдаланамыз</h2>
+    <p>Жиналған деректер мына мақсаттарда ғана:</p>
+    <ul>
+      <li>намаз уақытын есептеу және көрсету;</li>
+      <li>елдімекен/қала атауын Қосымша ішінде көрсету;</li>
+      <li>намаз карточкасында жаңбыр күйін көрсету үшін Open-Meteo-дан weather_code алу;</li>
+      <li>намаз және басқа рұқсат берілген еске салғыштар;</li>
+      <li>қолданбаның тұрақты жұмысы, қателерді түзету, тәжірибені жақсарту.</li>
+    </ul>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title" data-num="4">Үшінші тарап қызметтері</h2>
+    <p>Қосымша кейбір функциялар үшін сенімді үшінші тарап инфрақұрылымын қолдануы мүмкін, мысалы:</p>
+    <ul>
+      <li>бұлттық деректер базасы және аутентификация (мысалы, Firebase);</li>
+      <li>push-хабарламаларды жеткізу (мысалы, Apple Push Notification service / Firebase Cloud Messaging);</li>
+      <li>төлем және жазылым (Apple In-App Purchase), қолдау чаты немесе басқа қолданба ішіндегі сервистер бапталған шекте;</li>
+      <li>ауа райы/жаңбыр күйі үшін Open-Meteo API (https://api.open-meteo.com).</li>
+    </ul>
+    <p>Қосымша карталық немесе геокодтау сервистеріне орналасу деректерін жібермейді. Алайда, ауа райын анықтау функциясы қосылғанда координаталар Open-Meteo сервисіне жіберілуі мүмкін. Пайдаланушы деректерін сатпаймыз және жарнама үшін таратпаймыз.</p>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title" data-num="5">Деректерді сақтау және қорғау</h2>
+    <ul>
+      <li>Көптеген баптаулар мен есептер құрылғыңызда сақталуы мүмкін.</li>
+      <li>Қауіпсіздік шараларын қолданамыз; алайда интернет арқылы алмасуда 100% қауіпсіздікке кепілдік жоқ.</li>
+    </ul>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title" data-num="6">Рұқсаттарды басқару</h2>
+    <p><strong>iOS:</strong></p>
+    <ul>
+      <li>Settings → Privacy &amp; Security → Location Services → Jannat Firdaus</li>
+      <li>Settings → Notifications → Jannat Firdaus</li>
+    </ul>
+    <p>Рұқсаттарды өшірсеңіз, намаз уақытының дәлдігі, елдімекен атауы немесе еске салғыштар шектелуі мүмкін.</p>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title" data-num="7">Балалардың құпиялығы</h2>
+    <p>Қосымша кәмелетке толмағандардың деректерін әдейі жинамайды. Түсініспешілік болса, хабарласыңыз: <a href="mailto:support@jannatfirdaus.app">support@jannatfirdaus.app</a>.</p>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title" data-num="8">Саясатқа өзгерістер</h2>
+    <p>Біз осы саясатты жаңарта аламыз. Жаңа нұсқа жарияланғаннан кейін күшіне енеді. Күшіне ену күні жоғарыда көрсетіледі.</p>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title" data-num="9">Байланыс</h2>
+    <p>Құпиялыққа қатысты сұрақтар: <a href="mailto:support@jannatfirdaus.app">support@jannatfirdaus.app</a></p>
+  </section>
+
+  <div class="footer">© 2026 Jannat Firdaus. Барлық құқықтар қорғалған.</div>
+
+</div>
+
+</body>
+</html>
