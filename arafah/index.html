@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jannat Firdaus — Арапа күні</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #059669;
+      --primary-soft: rgba(5, 150, 105, 0.12);
+      --text: #0F172A;
+      --text-muted: #475569;
+      --bg: #F8FAFC;
+      --bg-mesh-1: rgba(5, 150, 105, 0.06);
+      --bg-mesh-2: rgba(99, 102, 241, 0.04);
+      --card: #FFFFFF;
+      --card-border: rgba(0, 0, 0, 0.06);
+      --card-shadow: 0 4px 24px -8px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.02);
+      --quote-bg: rgba(5, 150, 105, 0.06);
+      --radius: 20px;
+      --radius-lg: 28px;
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --text: #F1F5F9;
+        --text-muted: #94A3B8;
+        --bg: #0A0D12;
+        --bg-mesh-1: rgba(5, 150, 105, 0.08);
+        --bg-mesh-2: rgba(99, 102, 241, 0.06);
+        --card: #12161E;
+        --card-border: rgba(255, 255, 255, 0.06);
+        --card-shadow: 0 8px 32px -8px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.04);
+        --quote-bg: rgba(5, 150, 105, 0.1);
+      }
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 120% 70% at 50% -20%, var(--bg-mesh-1), transparent 55%),
+        radial-gradient(ellipse 70% 50% at 100% 40%, var(--bg-mesh-2), transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .page {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 20px min(12vh, 96px);
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero {
+      margin: 0 -20px 28px;
+      border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--card-shadow);
+    }
+
+    .hero img {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-height: 420px;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .title-wrap {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+
+    h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(32px, 6vw, 42px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      color: var(--text);
+    }
+
+    .section {
+      background: var(--card);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--card-border);
+      box-shadow: var(--card-shadow);
+      padding: 26px 24px;
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    .section h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--primary);
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    .section p {
+      font-size: 15px;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+
+    .section p:last-child { margin-bottom: 0; }
+
+    .section strong { color: var(--text); font-weight: 600; }
+
+    blockquote {
+      margin: 16px 0;
+      padding: 16px 18px;
+      background: var(--quote-bg);
+      border-radius: 14px;
+      border-left: 4px solid var(--primary);
+      font-size: 14px;
+      color: var(--text-muted);
+      font-style: italic;
+      line-height: 1.75;
+    }
+
+    blockquote cite {
+      display: block;
+      margin-top: 10px;
+      font-style: normal;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    .sense-list {
+      list-style: none;
+      margin: 14px 0 16px;
+      padding: 0;
+    }
+
+    .sense-list li {
+      font-size: 15px;
+      color: var(--text-muted);
+      padding: 12px 14px;
+      margin-bottom: 8px;
+      background: var(--quote-bg);
+      border-radius: 12px;
+      line-height: 1.65;
+    }
+
+    .sense-list li strong {
+      display: block;
+      color: var(--text);
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .arabic-box {
+      margin: 16px 0;
+      padding: 18px 16px;
+      text-align: center;
+      background: var(--quote-bg);
+      border-radius: 14px;
+      border: 1px solid var(--card-border);
+    }
+
+    .arabic-box .ar {
+      font-size: 17px;
+      line-height: 1.9;
+      color: var(--text);
+      direction: rtl;
+      margin-bottom: 12px;
+    }
+
+    .arabic-box .meaning {
+      font-size: 14px;
+      color: var(--text-muted);
+      text-align: left;
+      line-height: 1.7;
+      border-top: 1px solid var(--card-border);
+      padding-top: 12px;
+    }
+
+    .closing {
+      background: linear-gradient(135deg, var(--primary-soft) 0%, transparent 60%);
+      text-align: center;
+    }
+
+    .closing p {
+      font-size: 16px;
+      color: var(--text);
+      line-height: 1.8;
+      margin-bottom: 12px;
+    }
+
+    .closing p:last-child {
+      margin-bottom: 0;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 17px;
+      color: var(--primary);
+    }
+
+    .footer {
+      margin-top: 40px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .footer a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .footer a:hover { text-decoration: underline; }
+
+    @media (min-width: 640px) {
+      .page { padding-top: 24px; }
+      .hero {
+        margin: 0 0 32px;
+        border-radius: var(--radius-lg);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <article class="page">
+
+    <header class="hero">
+      <img
+        src="https://storage.yandexcloud.kz/jannatfirdays/appnewsimage/1026-2.jpg"
+        alt="Арапа күні"
+        width="1026"
+        height="auto"
+        loading="eager"
+      />
+    </header>
+
+    <div class="title-wrap">
+      <h1>Арапа күні</h1>
+    </div>
+
+    <section class="section">
+      <h2>Арапа күнін құрметтеу</h2>
+      <p>Пайғамбарымыз Мұхаммед (оған Алланың салауаты мен сәлемі болсын):</p>
+      <blockquote>
+        «Арапа күнін құрметтеңдер! Өйткені Арапа – Алла Тағала қадірлеген күн»
+        <cite>Дәйләми</cite>
+      </blockquote>
+      <p>тағы бір өсиетінде:</p>
+      <blockquote>
+        «Арапа күні құлағына, көзіне және тіліне ие болған адам кешіріледі»
+        <cite>Табарани</cite>
+      </blockquote>
+      <ul class="sense-list">
+        <li><strong>Құлағына ие болу</strong> — ғайбат, мәні жоқ жаман өлеңдерді тыңдамау деген сөз. Егер бұлар біздің қалауымыздан тыс құлағымызға келетін болса, бізге күнә болмайды.</li>
+        <li><strong>Көзге ие болу</strong> — харам нәрселерге қарамау және мубах нәрселерден ғибрат алу деген сөз.</li>
+        <li><strong>Тіліне ие болу</strong> — өтірік, өсек, сөз тасу, жаман сөз, тіпті бос сөзден тыйылу, ешкімді тілімен ренжітпеу дегенді білдіреді.</li>
+      </ul>
+      <p>Осы аталғандарға мойынсұнып жүрген адам Арапа күнін құрметтеген болады.</p>
+      <p>Сондықтан, бұл күні жасалған игі істер үшін сауаптар бірнеше есе артады және оның шын мәніндегі көптігін Алладан басқа ешкім білмейді. Сол сияқты бұл күні жасалған күнәлардың да жазасы бірнеше есе артады.</p>
+    </section>
+
+    <section class="section">
+      <h2>Тәшриқ тәкбірі</h2>
+      <p>Арапа күні таң намазынан бастап Құрбан айттың төртінші күні екінті намазына дейінгі 23 намазда еркек-әйел барлық адам парыз намаздардан кейін сәлем бере сала «Аллаһуммә әнтәссәлам...» дұғасын оқымай тұрып, уәжіп болған тәшриқ тәкбір дұғасын (жеке оқыса да, жамағатпен оқыса да) дауыстап оқулары керек. Әйел адамдар дауыстарын шағырмай, іштерінен оқиды. Парыз намаздарынан басқа айт және жұма намаздарынан кейін де оқылады.</p>
+      <div class="arabic-box">
+        <p class="ar">الله أكبر، الله أكبر، لا إله إلا الله والله أكبر، الله أكبر ولله الحمد</p>
+        <p class="meaning"><strong>Тәшриқ тәкбірі:</strong> «Аллаһу әкбар, Аллаһу әкбар, Ла илаһә иллаллаһу уаллаһу әкбар, Аллаһу әкбар уә лилләһил-хамд» — Мағынасы: Алла Ұлық, Алла Ұлық! Алладан басқа құдай жоқ және Алла бәрінен де Ұлық! Алла Ұлық әрі күллі мадақ-мақтаулар тек Аллаға тән!</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Ораза ұстау</h2>
+      <p>Арапа күні ораза ұстау қажет (сүннет) амал. Өйткені, ораза – нәпсі тәрбиесінің негізі. Хадистерде Арапа күні ораза тұтудың сауабы мол және күнәларымыз кешірілетінін жеткізген.</p>
+      <blockquote>
+        «Арапа күні ораза тұтушыға Адам пайғамбардан (яғни алғашқы адамнан) Қиямет сырнайы үрленгенге дейін, өмір сүрген бүкіл адамдар санының екі есесіндей сауап жазылады»
+        <cite>Пайғамбарымыз Мұхаммед ﷺ</cite>
+      </blockquote>
+      <p>Тағы бір риуаятта, момындардың анасы Айша (Алла оған разы болсын) Масрукқа: «Ей Масрук, сен Расулуллаһтың (оған Алланың салауаты мен сәлемі болсын) Арапа күні оразаны мың күнмен салыстырғанын естідің бе?» деді. <cite>(Байхаки, Табарани)</cite></p>
+      <blockquote>
+        «Арапа күні ұсталған ораза 1000 күн тұтылған (нәпіл) оразаға тең»
+        <cite>Табарани</cite>
+      </blockquote>
+      <blockquote>
+        «Арапа күні ораза тұтқан адамдардың екі жылдық күнәлары кешіріледі. Бірі, өткен жылғы, екіншісі, келер жылдың күнәлары» — яғни, осы күні тұтылған ораза өткен және келер жылда жасалатын тәубелердің қабыл болуына себепші болады.
+        <cite>Муслим</cite>
+      </blockquote>
+    </section>
+
+    <section class="section">
+      <h2>Дұға жасау</h2>
+      <p>Алла Елшісі (оған Алланың салауаты мен сәлемі болсын) былай дейді:</p>
+      <blockquote>
+        «Дұғаның абзалы – Арапа күнінің дұғасы және мен әрі менен бұрын болған пайғамбарлардың айтқан дұғаның абзалы – Алла Тағаладан өзге тәңір жоқ. Ол – жалғыз. Оның серігі жоқ. Иелік және мақтау Алла Тағалаға тән әрі Ол барлық нәрсеге құдіретті».
+      </blockquote>
+      <p>Сол үшін осындай қасиеті мол күнді бос өткізбей, дұғамен күнімізді берекелі еткен жөн болады. Дұғамыз арқылы еліміз бен жеріміздің, жанұямыз бен ағайынның амандығын тілеу қажет.</p>
+      <blockquote>
+        «Дұғаның қадірлісі – Арапа күні жасалған дұға»
+        <cite>Бәйһақи</cite>
+      </blockquote>
+    </section>
+
+    <section class="section">
+      <h2>Тәубе ету</h2>
+      <p>Алла Елшісі (оған Алланың салауаты мен сәлемі болсын):</p>
+      <blockquote>
+        «Адам баласының бәрі қателік жасайды. Солардың ішіндегі ең жақсылары – жасаған қателіктері үшін тәубе ететіндері».
+      </blockquote>
+      <p>Демек күнә істемейтін, қателікке бой алдырмайтын пенде болмайды. Алла пендесіне тәубе ету мүмкіндігін берді. Сол үшін Арапа күні мейірім есігі ашылған кезде, Аллаға тәубе жасап, күнә-қателіктеріміздің кешірілуін сұрайық.</p>
+      <blockquote>
+        «Арапа – өте құнды күн. Ол күні мейірім есіктері ашылады»
+        <cite>Дәйләми</cite>
+      </blockquote>
+      <blockquote>
+        «Төрт түннің күндізі де түні секілді құнды болып келеді. Алла Тағала ол күндері дұға еткен адамның тілегін кері қайтармайды, оларды кешіреді және олар бұл күндерде мол ихсанға қауышады. Бұлар: Қадір түні, Арапа түні, Бәрат түні, жұма түні және күндері»
+        <cite>Дәйләми</cite>
+      </blockquote>
+    </section>
+
+    <section class="section">
+      <h2>Кешірімді болу</h2>
+      <p>Кешірім – иманның шынайы көрінісі. Адамзаттың ардақтысы Пайғамбарымыз Мұхаммед (оған Алланың салауаты мен сәлемі болсын) былай айтқан:</p>
+      <blockquote>
+        «Кешіре әрі райдан қайта біліңдер, өйткені кешірім мен мейірімділік таныту пенденің маңыздылығын арттыра түседі. Егер Алланың сізді ұлықтауын қаласаңыз, онда өзгелердің де күнәларын кешіріңіз».
+      </blockquote>
+      <p>Ендеше, Алланың шарапатымен, кешіре алатын мұсылман жұмақтағы Кәусәр бұлақтан су іше алады, Алла оны ұлықтайды, Қиямет күні өзі кешіріліп, жоғары дәрежеге ие болады. Ал кімде-кім мейірімділік танытпаса, мұның бәрінен құр алақан қалуы ықтимал. Осынау Алла қадірлі еткен күнде маңайымыздағы жандардың барлығын кешірсек, Алла бізді де кешіреді.</p>
+    </section>
+
+    <section class="section closing">
+      <p>Арапа күні мүбәрәк болып, елімізден, үйлерімізден бақ-береке кетпесін!</p>
+      <p>Жаратушы Жаббар Иеміз Арапа күнгі жасайтын ізгі амалдарымызды сауаптан жазғай! Әмин!</p>
+    </section>
+
+    <footer class="footer">
+      <a href="/">Басты бет</a> · <a href="/support/">Қолдау</a><br>
+      © 2026 Jannat Firdaus
+    </footer>
+
+  </article>
+
+</body>
+</html>
