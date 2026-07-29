@@ -328,6 +328,9 @@
       width: min(100%, 380px);
     }
     .arch-shadow {
+      position: relative;
+    }
+    .arch-cast {
       filter: drop-shadow(0 22px 28px rgba(4, 40, 26, 0.32));
     }
     .arch-frame {
@@ -356,6 +359,7 @@
       background: linear-gradient(180deg, rgba(4, 40, 26, 0.12) 0%, transparent 30%, transparent 70%, rgba(4, 40, 26, 0.28) 100%);
       z-index: 1;
     }
+
     .arch-caption {
       display: block;
       margin-top: 16px;
@@ -479,6 +483,7 @@
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
+      font-variant-numeric: tabular-nums;
     }
 
     .progress-track {
@@ -493,19 +498,45 @@
     .progress-fill {
       position: relative;
       height: 100%;
-      width: 0;
+      width: 0%;
       border-radius: 999px;
-      background: var(--gold-grad);
-      box-shadow: 0 0 16px rgba(221, 187, 110, 0.5);
+      background: linear-gradient(90deg, #9A7526 0%, #EBD49A 38%, #C9A24B 62%, #B08A32 100%);
+      background-size: 200% 100%;
+      box-shadow: 0 0 16px rgba(221, 187, 110, 0.55);
       will-change: width;
-      transition: width 1.6s var(--ease);
+    }
+    .progress-fill.is-animating {
+      animation: progressShine 1.8s ease-in-out;
     }
     .progress-fill::after {
       content: '';
       position: absolute;
-      inset: 0 0 50%;
-      border-radius: 999px 999px 0 0;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.42), transparent);
+      inset: 0;
+      border-radius: inherit;
+      background: linear-gradient(
+        105deg,
+        transparent 0%,
+        transparent 38%,
+        rgba(255, 255, 255, 0.55) 50%,
+        transparent 62%,
+        transparent 100%
+      );
+      background-size: 220% 100%;
+      opacity: 0;
+      pointer-events: none;
+    }
+    .progress-fill.is-animating::after {
+      opacity: 1;
+      animation: progressGlint 1.8s ease-in-out;
+    }
+
+    @keyframes progressShine {
+      0% { background-position: 100% 0; }
+      100% { background-position: 0% 0; }
+    }
+    @keyframes progressGlint {
+      0% { background-position: 120% 0; }
+      100% { background-position: -40% 0; }
     }
 
     .progress-foot {
@@ -519,6 +550,7 @@
     .progress-foot b {
       font-family: 'Literata', Georgia, serif;
       font-weight: 600;
+      font-variant-numeric: tabular-nums;
       color: var(--gold-300);
     }
     .progress-foot span:last-child { text-align: right; }
@@ -685,6 +717,11 @@
       border-radius: 50%;
       background: rgba(255, 253, 246, 0.1);
       border: 1px solid var(--hairline-on-dark);
+      opacity: 0;
+      transform: translateY(12px) scale(0.92);
+      transition:
+        opacity 0.55s var(--ease),
+        transform 0.55s var(--ease);
     }
     .niche-icon svg { fill: var(--gold-300); }
     .niches p {
@@ -692,6 +729,11 @@
       font-size: 14.5px;
       font-weight: 400;
       line-height: 1.3;
+      opacity: 0;
+      transform: translateY(10px);
+      transition:
+        opacity 0.55s var(--ease),
+        transform 0.55s var(--ease);
     }
     .niches li:last-child {
       grid-column: 1 / -1;
@@ -699,6 +741,24 @@
     }
     .niches li:last-child::after {
       border-radius: 112px 112px calc(var(--r-md) - 5px) calc(var(--r-md) - 5px);
+    }
+
+    /* Staggered fade-in when section is visible */
+    .section.is-in .niches li:nth-child(1) .niche-icon { transition-delay: 0.08s; }
+    .section.is-in .niches li:nth-child(1) p { transition-delay: 0.18s; }
+    .section.is-in .niches li:nth-child(2) .niche-icon { transition-delay: 0.28s; }
+    .section.is-in .niches li:nth-child(2) p { transition-delay: 0.38s; }
+    .section.is-in .niches li:nth-child(3) .niche-icon { transition-delay: 0.48s; }
+    .section.is-in .niches li:nth-child(3) p { transition-delay: 0.58s; }
+    .section.is-in .niches li:nth-child(4) .niche-icon { transition-delay: 0.68s; }
+    .section.is-in .niches li:nth-child(4) p { transition-delay: 0.78s; }
+    .section.is-in .niches li:nth-child(5) .niche-icon { transition-delay: 0.88s; }
+    .section.is-in .niches li:nth-child(5) p { transition-delay: 0.98s; }
+
+    .section.is-in .niche-icon,
+    .section.is-in .niches p {
+      opacity: 1;
+      transform: none;
     }
 
     /* ============================================================
@@ -1112,10 +1172,9 @@
     .reveal {
       opacity: 0;
       transform: translateY(24px) scale(0.985);
-      transition: opacity 0.9s var(--ease), transform 0.9s var(--ease), filter 0.9s var(--ease);
-      filter: blur(2px);
+      transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
     }
-    .reveal.is-in { opacity: 1; transform: none; filter: blur(0); }
+    .reveal.is-in { opacity: 1; transform: none; }
 
     /* entrance animation on first load */
     .intro-rise {
@@ -1155,6 +1214,12 @@
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       .reveal { opacity: 1; transform: none; transition: none; }
+      .niche-icon,
+      .niches p {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
       *, *::before, *::after { transition-duration: 0.01ms !important; }
     }
   </style>
@@ -1208,12 +1273,14 @@
 
       <figure class="arch reveal intro-rise intro-delay-3">
         <div class="arch-shadow">
-          <div class="arch-frame">
-            <div class="arch-inner">
-              <img src="../assets/render.webp" width="573" height="486"
-                   alt="Медресе құрылысының әуеден түсірілген көрінісі">
+          <div class="arch-cast">
+            <div class="arch-frame">
+              <div class="arch-inner">
+                <img src="../assets/render.webp" width="573" height="486"
+                     alt="Медресе құрылысының әуеден түсірілген көрінісі">
+              </div>
+              <span class="arch-glow" aria-hidden="true"></span>
             </div>
-            <span class="arch-glow" aria-hidden="true"></span>
           </div>
         </div>
         <figcaption class="arch-caption">Ахли Ислам · Құран жаттау орталығы</figcaption>
@@ -1241,17 +1308,17 @@
       <div class="progress-card">
         <div class="progress-head">
           <span class="k">Жиналған<br>қаражат</span>
-          <span class="progress-value">37%</span>
+          <span class="progress-value"><span id="progressPct">0</span>%</span>
         </div>
 
-        <div class="progress-track" role="progressbar" aria-valuenow="37" aria-valuemin="0" aria-valuemax="100"
-             aria-label="Жиналған қаражат үлесі">
+        <div class="progress-track" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"
+             aria-label="Жиналған қаражат үлесі" id="progressTrack">
           <div class="progress-fill" id="progressFill" data-value="37"></div>
         </div>
 
         <div class="progress-foot">
-          <span><b>37%</b> жиналды</span>
-          <span><b>63%</b> қажет</span>
+          <span><b id="progressCollected">0%</b> жиналды</span>
+          <span><b id="progressNeeded">100%</b> қажет</span>
         </div>
       </div>
     </section>
@@ -1642,19 +1709,53 @@
       /* ---------------- progress bar fill ---------------- */
       var fill = document.getElementById('progressFill');
       if (fill) {
-        var progressTrack = document.querySelector('.progress-track');
+        var progressTrack = document.getElementById('progressTrack') || document.querySelector('.progress-track');
         var progressCard = document.querySelector('.progress-card');
-        var target = fill.getAttribute('data-value') + '%';
+        var pctEl = document.getElementById('progressPct');
+        var collectedEl = document.getElementById('progressCollected');
+        var neededEl = document.getElementById('progressNeeded');
+        var targetValue = parseFloat(fill.getAttribute('data-value')) || 0;
         var started = false;
+        var duration = 1800;
+
+        function easeOutCubic(t) {
+          return 1 - Math.pow(1 - t, 3);
+        }
 
         function startProgress() {
           if (started) return;
           started = true;
-          window.requestAnimationFrame(function () {
-            window.requestAnimationFrame(function () {
-              fill.style.width = target;
-            });
-          });
+          fill.classList.add('is-animating');
+
+          var start = null;
+
+          function frame(now) {
+            if (start === null) start = now;
+            var t = Math.min(1, (now - start) / duration);
+            var eased = easeOutCubic(t);
+            var current = Math.round(targetValue * eased);
+
+            fill.style.width = (targetValue * eased) + '%';
+            if (pctEl) pctEl.textContent = String(current);
+            if (collectedEl) collectedEl.textContent = current + '%';
+            if (neededEl) neededEl.textContent = (100 - current) + '%';
+            if (progressTrack) progressTrack.setAttribute('aria-valuenow', String(current));
+
+            if (t < 1) {
+              window.requestAnimationFrame(frame);
+            } else {
+              fill.style.width = targetValue + '%';
+              if (pctEl) pctEl.textContent = String(Math.round(targetValue));
+              if (collectedEl) collectedEl.textContent = Math.round(targetValue) + '%';
+              if (neededEl) neededEl.textContent = Math.round(100 - targetValue) + '%';
+              if (progressTrack) progressTrack.setAttribute('aria-valuenow', String(Math.round(targetValue)));
+              window.setTimeout(function () {
+                fill.classList.remove('is-animating');
+              }, 200);
+            }
+          }
+
+          window.requestAnimationFrame(frame);
         }
 
         if (!('IntersectionObserver' in window)) {
@@ -1663,11 +1764,11 @@
           var po = new IntersectionObserver(function (entries) {
             entries.forEach(function (entry) {
               if (!entry.isIntersecting) return;
-              window.setTimeout(startProgress, 140);
+              startProgress();
               po.unobserve(entry.target);
             });
-          }, { threshold: 0.28, rootMargin: '0px 0px -8% 0px' });
-          po.observe(progressTrack || progressCard || fill);
+          }, { threshold: 0.35, rootMargin: '0px 0px -5% 0px' });
+          po.observe(progressCard || progressTrack || fill);
         }
       }
 
