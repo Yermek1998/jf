@@ -56,7 +56,7 @@
 
       --ease: cubic-bezier(0.22, 1, 0.36, 1);
       --ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
-      --bar-h: 108px;
+      --bar-h: 92px;
 
       --girih: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='72' viewBox='0 0 72 72'%3E%3Cg fill='none' stroke='%23C9A24B' stroke-width='0.9'%3E%3Cpath d='M36 6l6.6 11.4 12.8-3.4-3.4 12.8L63.4 36l-11.4 6.6 3.4 12.8-12.8-3.4L36 66l-6.6-11.4-12.8 3.4 3.4-12.8L8.6 36l11.4-6.6-3.4-12.8 12.8 3.4z'/%3E%3Cpath d='M36 20l3.6 6.2 7-1.9-1.9 7L51 36l-6.3 3.7 1.9 7-7-1.9L36 51l-3.6-6.2-7 1.9 1.9-7L21 36l6.3-3.7-1.9-7 7 1.9z'/%3E%3C/g%3E%3C/svg%3E");
     }
@@ -69,6 +69,7 @@
     html {
       scroll-behavior: smooth;
       -webkit-text-size-adjust: 100%;
+      overflow-x: clip;
     }
 
     body {
@@ -79,8 +80,8 @@
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
-      overflow-x: hidden;
-      padding-bottom: calc(var(--bar-h) + env(safe-area-inset-bottom));
+      overflow-x: clip;
+      overscroll-behavior-y: none;
       --scrollY: 0px;
     }
 
@@ -100,7 +101,7 @@
     body::after {
       content: '';
       position: fixed;
-      inset: -8%;
+      inset: 0;
       z-index: 0;
       pointer-events: none;
       opacity: 0.16;
@@ -118,6 +119,7 @@
       max-width: 480px;
       margin: 0 auto;
       padding: 0 20px;
+      overflow-x: clip;
     }
     .page::before,
     .page::after {
@@ -1004,7 +1006,7 @@
       position: relative;
       z-index: 1;
       margin-top: 64px;
-      padding: 46px 0 44px;
+      padding: 46px 0 calc(36px + var(--bar-h) + env(safe-area-inset-bottom));
       background: var(--emerald-grad);
       color: var(--gold-100);
       overflow: hidden;
