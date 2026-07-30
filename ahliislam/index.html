@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>150 қыз балаға арналған медресе — Ахли Ислам</title>
   <meta name="description" content="«Рухани құндылықтарды және білімді қолдау» қоғамдық қайырымдылық қоры. 150 қыз балаға арналған медресенің ішкі құрылыс жұмыстарына қолдау көрсетіңіз.">
-  <meta name="theme-color" content="#04321F">
+  <meta name="theme-color" content="#FCFAF4">
   <meta property="og:title" content="150 қыз балаға арналған медресе">
   <meta property="og:description" content="Ішкі құрылыс жұмыстарына қолдау көрсетіңіз. 1 кірпіш = 100 ₸.">
   <meta property="og:type" content="website">
@@ -66,10 +66,22 @@
        ============================================================ */
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
+    .svg-defs {
+      position: absolute;
+      width: 0;
+      height: 0;
+      overflow: hidden;
+      left: 0;
+      top: 0;
+      pointer-events: none;
+    }
+
     html {
       scroll-behavior: smooth;
       -webkit-text-size-adjust: 100%;
       overflow-x: clip;
+      background: var(--paper);
+      min-height: 100%;
     }
 
     body {
@@ -82,6 +94,8 @@
       -moz-osx-font-smoothing: grayscale;
       overflow-x: clip;
       overscroll-behavior-y: none;
+      min-height: 100%;
+      margin: 0;
       --scrollY: 0px;
     }
 
@@ -1231,7 +1245,7 @@
   <!-- ============================================================
        Shared SVG definitions: arch clip-path + brick + star
        ============================================================ -->
-  <svg style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true" focusable="false">
+  <svg class="svg-defs" aria-hidden="true" focusable="false">
     <defs>
       <clipPath id="archClip" clipPathUnits="objectBoundingBox">
         <path d="M0.5,0 C0.735,0.052 1,0.175 1,0.42 L1,0.955 C1,0.98 0.98,1 0.955,1 L0.045,1 C0.02,1 0,0.98 0,0.955 L0,0.42 C0,0.175 0.265,0.052 0.5,0 Z"/>
@@ -1285,7 +1299,6 @@
             </div>
           </div>
         </div>
-        <figcaption class="arch-caption">Ахли Ислам · Құран жаттау орталығы</figcaption>
       </figure>
 
       <section class="hadith reveal intro-rise intro-delay-4">
@@ -1336,7 +1349,7 @@
 
       <ul class="tiers">
         <li>
-          <a class="tier" href="https://pay.kaspi.kz/pay/d3lmzu9c" target="_blank" rel="noopener noreferrer">
+          <a class="tier" href="https://kaspi.kz/pay/OFAhliIslam" target="_blank" rel="noopener noreferrer">
             <span class="tier-icon">
               <img src="../assets/1.png" width="66" height="58" alt="" loading="lazy">
             </span>
@@ -1352,7 +1365,7 @@
         </li>
 
         <li>
-          <a class="tier" href="https://pay.kaspi.kz/pay/d3lmzu9c" target="_blank" rel="noopener noreferrer">
+          <a class="tier" href="https://kaspi.kz/pay/OFAhliIslam" target="_blank" rel="noopener noreferrer">
             <span class="tier-icon">
               <img src="../assets/10.png" width="66" height="58" alt="" loading="lazy">
             </span>
@@ -1368,7 +1381,7 @@
         </li>
 
         <li>
-          <a class="tier tier--featured" href="https://pay.kaspi.kz/pay/d3lmzu9c" target="_blank" rel="noopener noreferrer">
+          <a class="tier tier--featured" href="https://kaspi.kz/pay/OFAhliIslam" target="_blank" rel="noopener noreferrer">
             <span class="tier-badge">Ең үлкен үлес</span>
             <span class="tier-icon">
               <img src="../assets/100.png" width="66" height="58" alt="" loading="lazy">
@@ -1558,20 +1571,8 @@
           <dd>ОФ «Рухани құндылықтарды және білімді қолдау»</dd>
         </div>
         <div>
-          <dt>Мекенжай</dt>
-          <dd>Шымкент қаласы, Новостройка, 131/2</dd>
-        </div>
-        <div>
           <dt>БСН</dt>
           <dd>211140028920</dd>
-        </div>
-        <div>
-          <dt>Банк</dt>
-          <dd>АО «Kaspi Bank»</dd>
-        </div>
-        <div>
-          <dt>КБе / БИК</dt>
-          <dd>18 · CASPKZKA</dd>
         </div>
         <div>
           <dt>Шот нөмірі</dt>
@@ -1591,14 +1592,12 @@
       <p class="footer-close">
         «Садақа малды кемітпейді» —<br>берген қолдауыңыз садақа-жария болып қалады.
       </p>
-
-      <p class="footer-meta">© 2026 · Ахли Ислам · Барлық құқық қорғалған</p>
     </div>
   </footer>
 
   <!-- ========================= DONATE BAR ========================= -->
   <div class="donate-bar">
-    <a class="donate" href="https://pay.kaspi.kz/pay/d3lmzu9c" target="_blank" rel="noopener noreferrer">
+    <a class="donate" href="https://kaspi.kz/pay/OFAhliIslam" target="_blank" rel="noopener noreferrer">
       <span class="ico" aria-hidden="true">
         <img src="../assets/kaspi.png" width="40" height="40" alt="">
       </span>
