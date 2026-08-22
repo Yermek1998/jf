@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jannat Firdaus — Демеуші іздеу</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #059669;
+      --primary-hover: #047857;
+      --primary-glow: rgba(5, 150, 105, 0.4);
+      --primary-soft: rgba(5, 150, 105, 0.12);
+      --text: #0F172A;
+      --text-muted: #475569;
+      --bg: #F8FAFC;
+      --bg-mesh-1: rgba(5, 150, 105, 0.06);
+      --bg-mesh-2: rgba(99, 102, 241, 0.04);
+      --card: #FFFFFF;
+      --card-border: rgba(0, 0, 0, 0.06);
+      --card-shadow: 0 4px 24px -8px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.02);
+      --radius: 20px;
+      --radius-lg: 28px;
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --text: #F1F5F9;
+        --text-muted: #94A3B8;
+        --bg: #0A0D12;
+        --bg-mesh-1: rgba(5, 150, 105, 0.08);
+        --bg-mesh-2: rgba(99, 102, 241, 0.06);
+        --card: #12161E;
+        --card-border: rgba(255, 255, 255, 0.06);
+        --card-shadow: 0 8px 32px -8px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.04);
+      }
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 120% 70% at 50% -20%, var(--bg-mesh-1), transparent 55%),
+        radial-gradient(ellipse 70% 50% at 100% 40%, var(--bg-mesh-2), transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      max-width: 520px;
+      margin: 0 auto;
+      padding: min(10vh, 72px) 24px min(12vh, 96px);
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+
+    .logo-wrap {
+      margin-bottom: 28px;
+      animation: fadeInDown 0.8s var(--ease) forwards;
+      opacity: 0;
+    }
+    .logo-wrap img {
+      height: 80px;
+      width: auto;
+      display: inline-block;
+      filter: drop-shadow(0 6px 20px rgba(0, 0, 0, 0.08));
+    }
+    @media (prefers-color-scheme: dark) {
+      .logo-wrap img { filter: drop-shadow(0 6px 24px rgba(0, 0, 0, 0.4)); }
+    }
+    .logo-wrap .logo-day { display: inline-block; }
+    .logo-wrap .logo-night { display: none; }
+    @media (prefers-color-scheme: dark) {
+      .logo-wrap .logo-day { display: none; }
+      .logo-wrap .logo-night { display: inline-block; }
+    }
+
+    h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(28px, 5vw, 36px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 12px;
+      animation: fadeInUp 0.8s var(--ease) 0.1s forwards;
+      opacity: 0;
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 16px;
+      margin-bottom: 28px;
+      animation: fadeInUp 0.8s var(--ease) 0.15s forwards;
+      opacity: 0;
+    }
+
+    .intro-card,
+    .block-card {
+      background: var(--card);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--card-border);
+      box-shadow: var(--card-shadow);
+      padding: 28px 26px;
+      margin-bottom: 18px;
+      text-align: left;
+      animation: fadeInUp 0.9s var(--ease) forwards;
+      opacity: 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .intro-card { animation-delay: 0.25s; }
+    .block-card:nth-of-type(1) { animation-delay: 0.35s; }
+
+    .intro-card::after {
+      content: '';
+      position: absolute;
+      top: 0; right: 0;
+      width: 140px; height: 140px;
+      background: radial-gradient(circle, var(--primary-soft) 0%, transparent 70%);
+      border-radius: 50%;
+      transform: translate(25%, -25%);
+    }
+
+    .section-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+      position: relative;
+      z-index: 1;
+    }
+
+    p {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.75;
+      margin-bottom: 12px;
+      position: relative;
+      z-index: 1;
+    }
+    p:last-child { margin-bottom: 0; }
+    strong { color: var(--text); }
+
+    .list {
+      margin: 0;
+      padding-left: 20px;
+      display: grid;
+      gap: 10px;
+      color: var(--text-muted);
+      font-size: 15px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 18px;
+      padding: 16px 22px;
+      border-radius: 16px;
+      background: var(--primary);
+      color: #fff;
+      font-weight: 700;
+      font-size: 16px;
+      text-decoration: none;
+      position: relative;
+      z-index: 1;
+      transition: transform 0.3s var(--ease), background 0.2s ease;
+    }
+    .cta:hover {
+      background: var(--primary-hover);
+      transform: translateY(-2px);
+    }
+
+    .footer {
+      margin-top: 48px;
+      font-size: 13px;
+      color: var(--text-muted);
+      animation: fadeIn 0.8s var(--ease) 0.6s forwards;
+      opacity: 0;
+    }
+    .footer a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .footer a:hover { text-decoration: underline; }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <div class="logo-wrap">
+      <img class="logo-day" src="https://jannatfirdaus.app/icon_day.png" alt="Jannat Firdaus" />
+      <img class="logo-night" src="https://jannatfirdaus.app/icon_night.png" alt="Jannat Firdaus" />
+    </div>
+
+    <h1>Жақсылыққа бірге үлес қосайық</h1>
+    <p class="subtitle">Jannat Firdaus жобасының дамуына қолдау көрсетіп, пайдалы істің жалғасуына себеп болыңыз.</p>
+
+    <div class="intro-card">
+      <p>Jannat Firdaus — құлшылықты жеңілдетуге және пайдалы діни білімді қолжетімді етуге арналған жоба. Құран оқу, зікір мен дұғалар, діни мәтіндер, кітапхана, еске салғыштар және өзге де маңызды мүмкіндіктер бір қолданбада жинақталған.</p>
+      <p>Жобаның әрі қарай дамуы, жаңа мүмкіндіктердің қосылуы және қолданбаның тұрақты жұмыс істеуі сіздердің қолдауларыңызға байланысты.</p>
+      <p>Егер мұсылман бауырларымыздың діни білімін арттыруына, намаз бен Құранға жақындауына үлес қосқыңыз келсе, Jannat Firdaus жобасының <strong>демеушілерінің</strong> бірі бола аласыз. Сіздің қолдауыңыз бір қолданбаның дамуына ғана емес, пайдалы білім мен жақсылықтың көпшілікке таралуына себеп болады.</p>
+      <p>Қолданбаның тұрақты жұмыс істеуі үшін тұрақты <strong>серверлік шығындар</strong> қажет. Серверлерде деректер мен контент сақталады, қажетті ақпарат жаңартылып отырады және мыңдаған қолданушыға бір мезетте қызмет көрсетіледі. Осы шығындарды өтеу жобаның үздіксіз әрі тұрақты жұмыс істеуіне мүмкіндік береді.</p>
+    </div>
+
+    <div class="block-card" style="animation-delay: 0.32s">
+      <h2 class="section-title">Серверлік шығындар</h2>
+      <p>Қолданбаның көзге көрінбейтін, бірақ ең маңызды бөлігі — серверлік жүйе. Ол деректердің сақталуын, контенттің жаңартылуын және қолданба қызметтерінің тәулік бойы тұрақты жұмыс істеуін қамтамасыз етеді.</p>
+      <p>Серверді жалдау, деректерді сақтау, қауіпсіздік пен техникалық қызмет көрсету үшін тұрақты шығындар қажет. Демеушілердің қолдауы осы шығындарды өтеуге және Jannat Firdaus жобасының мыңдаған қолданушыға үздіксіз қызмет көрсетуіне мүмкіндік береді.</p>
+      <ul class="list">
+        <li>Сервер мен деректер қорына кететін шығындарды өтеу</li>
+        <li>Қолданбаның жылдам әрі тұрақты жұмысын қамтамасыз ету</li>
+        <li>Деректердің қауіпсіз сақталуын қамтамасыз ету</li>
+        <li>Жаңа мүмкіндіктерді тұрақты әрі қауіпсіз түрде қосу</li>
+      </ul>
+    </div>
+
+    <div class="block-card" style="animation-delay: 0.45s">
+      <h2 class="section-title">Байланыс</h2>
+      <p>Егер осы игі істің дамуына үлес қосып, жобаға қолдау білдіргіңіз келсе — бізбен байланысыңыз. Әрбір қолдау Jannat Firdaus жобасының дамуына, пайдалы мүмкіндіктердің көбеюіне және жақсылықтың одан әрі таралуына себеп болады.</p>
+      <a class="cta" href="https://wa.me/77001000098?text=Jannat%20Firdaus%20%D0%B6%D0%BE%D0%B1%D0%B0%D1%81%D1%8B%D0%BD%D0%B0%20%D0%B4%D0%B5%D0%BC%D0%B5%D1%83%D1%88%D1%96%20%D0%B1%D0%BE%D0%BB%D2%93%D1%8B%D0%BC%20%D0%BA%D0%B5%D0%BB%D0%B5%D0%B4%D1%96" target="_blank" rel="noopener noreferrer">Демеуші болғым келеді</a>
+    </div>
+
+    <div class="footer">
+      <a href="/support/">Қолдау</a> · <a href="/privacy/">Құпиялық саясаты</a><br>
+      © 2026 Jannat Firdaus
+    </div>
+
+  </div>
+
+</body>
+</html>
