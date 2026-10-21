@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Туған күніңмен, Зәуре!</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600;1,700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --night-1: #1d0b24;
+    --night-2: #3b1240;
+    --night-3: #5c1d4d;
+    --rose: #ff6f98;
+    --rose-soft: #ffb3c7;
+    --gold: #f7c873;
+    --gold-soft: #ffe3a8;
+    --cream: #fff6f0;
+    --text: #fff8fa;
+    --muted: rgba(255, 236, 244, 0.78);
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  [hidden] { display: none !important; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    min-height: 100vh;
+    min-height: 100dvh;
+    font-family: "Lora", Georgia, serif;
+    color: var(--text);
+    background:
+      radial-gradient(ellipse 80% 50% at 50% 0%, rgba(255, 111, 152, 0.28), transparent 70%),
+      radial-gradient(ellipse 60% 40% at 0% 100%, rgba(247, 200, 115, 0.18), transparent 70%),
+      linear-gradient(180deg, var(--night-1) 0%, var(--night-2) 55%, var(--night-3) 100%);
+    background-attachment: fixed;
+    overflow-x: hidden;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* ===== Фон: жұлдыздар мен шарлар ===== */
+  .sky, .balloons {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+  }
+  .star {
+    position: absolute;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.9);
+    animation: twinkle ease-in-out infinite;
+  }
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.2; transform: scale(0.8); }
+    50% { opacity: 1; transform: scale(1.15); }
+  }
+
+  .balloon {
+    position: absolute;
+    bottom: -160px;
+    width: 54px;
+    height: 68px;
+    border-radius: 50% 50% 48% 48% / 55% 55% 45% 45%;
+    opacity: 0.55;
+    animation: rise linear infinite;
+  }
+  .balloon::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -7px;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-bottom-color: inherit;
+    border-top: 0;
+    filter: brightness(0.9);
+  }
+  .balloon::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    width: 1px;
+    height: 90px;
+    background: rgba(255, 255, 255, 0.35);
+  }
+  .balloon span {
+    position: absolute;
+    top: 14%;
+    left: 22%;
+    width: 22%;
+    height: 26%;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.45);
+  }
+  @keyframes rise {
+    0% { transform: translate3d(0, 0, 0) rotate(-4deg); }
+    50% { transform: translate3d(24px, -60vh, 0) rotate(4deg); }
+    100% { transform: translate3d(-12px, -125vh, 0) rotate(-3deg); }
+  }
+
+  main {
+    position: relative;
+    z-index: 2;
+    max-width: 620px;
+    margin: 0 auto;
+    padding: max(48px, env(safe-area-inset-top)) 20px max(56px, env(safe-area-inset-bottom));
+    display: flex;
+    flex-direction: column;
+    gap: 34px;
+  }
+
+  /* ===== Hero ===== */
+  .hero { text-align: center; padding-top: 20px; }
+  .eyebrow {
+    display: inline-block;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    padding: 7px 14px;
+    border: 1px solid rgba(247, 200, 115, 0.45);
+    border-radius: 999px;
+  }
+  .hero h1 {
+    margin-top: 22px;
+    font-size: clamp(30px, 8vw, 44px);
+    font-weight: 600;
+    line-height: 1.2;
+  }
+  .name {
+    display: block;
+    margin-top: 6px;
+    font-style: italic;
+    font-weight: 700;
+    font-size: clamp(72px, 22vw, 128px);
+    line-height: 1.05;
+    background: linear-gradient(100deg, var(--gold-soft) 0%, var(--rose-soft) 30%, #ffffff 45%, var(--rose-soft) 60%, var(--gold) 100%);
+    background-size: 250% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: shimmer 5s linear infinite;
+    filter: drop-shadow(0 6px 24px rgba(255, 111, 152, 0.35));
+  }
+  @keyframes shimmer {
+    from { background-position: 100% 0; }
+    to { background-position: -150% 0; }
+  }
+  .hero p {
+    margin-top: 16px;
+    font-size: clamp(18px, 4.8vw, 21px);
+    line-height: 1.6;
+    color: var(--muted);
+  }
+  .scroll-hint {
+    margin-top: 26px;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    font-size: 13px;
+    color: var(--muted);
+    text-decoration: none;
+  }
+  .scroll-hint i {
+    width: 22px;
+    height: 34px;
+    border: 2px solid rgba(255, 255, 255, 0.45);
+    border-radius: 12px;
+    position: relative;
+  }
+  .scroll-hint i::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 6px;
+    width: 4px;
+    height: 7px;
+    margin-left: -2px;
+    border-radius: 2px;
+    background: #fff;
+    animation: wheel 1.6s ease-in-out infinite;
+  }
+  @keyframes wheel {
+    0% { opacity: 0; transform: translateY(0); }
+    30% { opacity: 1; }
+    100% { opacity: 0; transform: translateY(10px); }
+  }
+
+  /* ===== Карточка ===== */
+  .card {
+    position: relative;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 30px;
+    padding: 32px 24px;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    box-shadow: 0 28px 70px rgba(0, 0, 0, 0.35);
+  }
+  .section-title {
+    text-align: center;
+    font-size: clamp(24px, 6.5vw, 30px);
+    font-weight: 700;
+  }
+  .section-sub {
+    text-align: center;
+    margin-top: 8px;
+    font-size: 17px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* ===== Торт ===== */
+  .cake-wrap {
+    display: flex;
+    justify-content: center;
+    margin: 34px 0 26px;
+  }
+  .cake {
+    position: relative;
+    width: 220px;
+    height: 190px;
+    cursor: pointer;
+  }
+  .plate {
+    position: absolute;
+    left: -10px;
+    right: -10px;
+    bottom: 0;
+    height: 16px;
+    border-radius: 50%;
+    background: linear-gradient(180deg, #fff, #d9cfe0);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+  }
+  .tier {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 14px 14px 10px 10px;
+  }
+  .tier.bottom {
+    bottom: 10px;
+    width: 200px;
+    height: 74px;
+    background: linear-gradient(180deg, #ff9fbd, #e9668f);
+  }
+  .tier.top {
+    bottom: 80px;
+    width: 140px;
+    height: 58px;
+    background: linear-gradient(180deg, #fff1f5, #ffc9d8);
+  }
+  .tier::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 18px;
+    border-radius: 14px 14px 0 0;
+    background:
+      radial-gradient(circle at 10px 18px, transparent 9px, #fffafc 10px) 0 0 / 20px 22px repeat-x;
+  }
+  .tier.bottom::after, .tier.top::after {
+    content: "";
+    position: absolute;
+    left: 10%;
+    right: 10%;
+    bottom: 18px;
+    height: 6px;
+    border-radius: 6px;
+    background: repeating-linear-gradient(90deg, var(--gold) 0 10px, transparent 10px 18px);
+    opacity: 0.85;
+  }
+  .candles {
+    position: absolute;
+    bottom: 138px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 22px;
+  }
+  .candle {
+    position: relative;
+    width: 10px;
+    height: 40px;
+    border-radius: 3px;
+    background: repeating-linear-gradient(45deg, #fff 0 5px, var(--rose) 5px 10px);
+  }
+  .candle::before {
+    content: "";
+    position: absolute;
+    top: -6px;
+    left: 50%;
+    width: 2px;
+    height: 7px;
+    margin-left: -1px;
+    background: #3a2a2a;
+  }
+  .flame {
+    position: absolute;
+    left: 50%;
+    top: -30px;
+    width: 14px;
+    height: 24px;
+    margin-left: -7px;
+    border-radius: 50% 50% 35% 35% / 60% 60% 40% 40%;
+    background: radial-gradient(ellipse at 50% 70%, #fff 0%, #ffe9a3 30%, #ffb347 60%, rgba(255, 120, 40, 0) 75%);
+    box-shadow: 0 0 18px 6px rgba(255, 190, 90, 0.55);
+    transform-origin: 50% 100%;
+    animation: flicker 0.9s ease-in-out infinite alternate;
+    transition: opacity 260ms var(--ease-out), transform 260ms var(--ease-out);
+  }
+  @keyframes flicker {
+    0% { transform: scale(1) rotate(-2deg); }
+    50% { transform: scale(1.08, 0.94) rotate(2deg); }
+    100% { transform: scale(0.95, 1.06) rotate(-1deg); }
+  }
+  .cake.out .flame { opacity: 0; transform: scale(0.2); animation: none; }
+  .smoke {
+    position: absolute;
+    left: 50%;
+    top: -26px;
+    width: 10px;
+    height: 10px;
+    margin-left: -5px;
+    border-radius: 50%;
+    background: rgba(220, 220, 230, 0.55);
+    opacity: 0;
+    pointer-events: none;
+  }
+  .cake.out .smoke { animation: smoke 1.6s ease-out forwards; }
+  @keyframes smoke {
+    0% { opacity: 0.7; transform: translateY(0) scale(0.6); }
+    100% { opacity: 0; transform: translateY(-48px) translateX(8px) scale(2.4); }
+  }
+
+  .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    border: 0;
+    border-radius: 18px;
+    padding: 17px 20px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    cursor: pointer;
+    background: linear-gradient(135deg, var(--rose), #d6457a);
+    box-shadow: 0 14px 30px rgba(214, 69, 122, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+    transition: transform 160ms var(--ease-out), box-shadow 160ms var(--ease-out), opacity 200ms;
+  }
+  .btn:active { transform: scale(0.97); }
+  .btn:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+  @media (hover: hover) and (pointer: fine) {
+    .btn:hover { box-shadow: 0 18px 36px rgba(214, 69, 122, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.25); }
+  }
+  .btn.gold {
+    color: #3b2306;
+    background: linear-gradient(135deg, var(--gold-soft), var(--gold));
+    box-shadow: 0 14px 30px rgba(247, 200, 115, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  }
+  .wish-made {
+    text-align: center;
+    font-size: 20px;
+    font-style: italic;
+    font-weight: 600;
+    color: var(--gold-soft);
+    animation: pop 600ms var(--ease-out);
+  }
+  @keyframes pop {
+    0% { opacity: 0; transform: scale(0.9); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+
+  /* ===== Хат ===== */
+  .letter {
+    background: linear-gradient(180deg, #fffaf6, #fff0f3);
+    color: #3d2430;
+    border: 0;
+  }
+  .letter::before {
+    content: "";
+    position: absolute;
+    inset: 10px;
+    border-radius: 22px;
+    border: 1px solid rgba(200, 140, 70, 0.45);
+    pointer-events: none;
+  }
+  .letter .greeting {
+    font-size: clamp(30px, 8vw, 38px);
+    font-style: italic;
+    font-weight: 700;
+    color: #b0254f;
+    text-align: center;
+  }
+  .letter p {
+    margin-top: 16px;
+    font-size: clamp(17.5px, 4.6vw, 19.5px);
+    line-height: 1.75;
+    text-align: center;
+  }
+  .letter em { font-style: italic; font-weight: 600; color: #b0254f; }
+  .divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin: 22px auto 0;
+    max-width: 240px;
+    color: #c88a3a;
+  }
+  .divider::before, .divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(200, 138, 58, 0.7), transparent);
+  }
+  .love-line {
+    margin-top: 22px;
+    text-align: center;
+    font-size: clamp(28px, 7.6vw, 36px);
+    font-style: italic;
+    font-weight: 700;
+    color: #b0254f;
+  }
+
+  /* ===== Тілектер ===== */
+  .wishes {
+    margin-top: 24px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .wish {
+    padding: 18px 14px;
+    border-radius: 20px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+  }
+  .wish .icon { font-size: 30px; display: block; }
+  .wish .text { display: block; margin-top: 8px; font-size: 16.5px; line-height: 1.45; font-weight: 500; }
+
+  .signature {
+    text-align: center;
+    margin-top: 6px;
+  }
+  .signature .heart {
+    display: inline-block;
+    font-size: 54px;
+    color: var(--rose);
+    animation: beat 1.6s ease-in-out infinite;
+    filter: drop-shadow(0 6px 18px rgba(255, 111, 152, 0.55));
+  }
+  @keyframes beat {
+    0%, 100% { transform: scale(1); }
+    15% { transform: scale(1.18); }
+    30% { transform: scale(1); }
+    45% { transform: scale(1.1); }
+  }
+  .signature .from {
+    margin-top: 12px;
+    font-size: 20px;
+    font-style: italic;
+    font-weight: 600;
+    color: var(--gold-soft);
+  }
+  .signature .from small {
+    display: block;
+    margin-top: 4px;
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--muted);
+  }
+  .final-btn { margin-top: 22px; }
+
+  /* ===== Пайда болу анимациясы ===== */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 900ms var(--ease-out), transform 900ms var(--ease-out);
+  }
+  .reveal.visible { opacity: 1; transform: none; }
+  .locked { display: none; }
+
+  /* ===== Шашу, жүректер ===== */
+  .confetti {
+    position: fixed;
+    top: -14px;
+    width: 9px;
+    height: 14px;
+    border-radius: 2px;
+    pointer-events: none;
+    z-index: 30;
+    animation: fall linear forwards;
+  }
+  @keyframes fall {
+    to { transform: translate3d(var(--dx), 108vh, 0) rotate(var(--rot)); }
+  }
+  .float-heart {
+    position: fixed;
+    pointer-events: none;
+    z-index: 31;
+    color: var(--rose);
+    animation: float-up 1200ms var(--ease-out) forwards;
+  }
+  @keyframes float-up {
+    from { opacity: 1; transform: translate(-50%, -50%) scale(0.6); }
+    to { opacity: 0; transform: translate(calc(-50% + var(--dx)), calc(-50% - 110px)) scale(1.2); }
+  }
+
+  @media (max-width: 380px) {
+    .wishes { grid-template-columns: 1fr; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 1ms !important; animation-iteration-count: 1 !important; }
+    .balloons, .confetti, .float-heart { display: none; }
+    .reveal { transition: opacity 300ms linear; transform: none; }
+    html { scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+  <div class="sky" id="sky" aria-hidden="true"></div>
+  <div class="balloons" id="balloons" aria-hidden="true"></div>
+
+  <main>
+    <section class="hero">
+      <span class="eyebrow">Бүгін ерекше күн</span>
+      <h1>Туған күніңмен,<span class="name">Зәуре!</span></h1>
+      <p>Әлемдегі ең әдемі, ең мейірімді әрі ең сүйікті жанға арналады ♡</p>
+      <a class="scroll-hint" href="#cake"><i></i>Төмен түс</a>
+    </section>
+
+    <section class="card reveal" id="cake">
+      <h2 class="section-title">Тілегіңді тіле, жаным</h2>
+      <p class="section-sub">Көзіңді жұмып, жүрегіңдегі арманыңды ойла да, шырақтарды үрле 🕯</p>
+      <div class="cake-wrap">
+        <div class="cake" id="cakeEl" role="button" tabindex="0" aria-label="Шырақтарды сөндіру">
+          <div class="candles">
+            <div class="candle"><div class="flame"></div><div class="smoke"></div></div>
+            <div class="candle"><div class="flame"></div><div class="smoke"></div></div>
+            <div class="candle"><div class="flame"></div><div class="smoke"></div></div>
+          </div>
+          <div class="tier top"></div>
+          <div class="tier bottom"></div>
+          <div class="plate"></div>
+        </div>
+      </div>
+      <button class="btn" id="blowBtn" type="button">🌬 Шырақтарды үрлеу</button>
+      <p class="wish-made" id="wishMade" hidden>Тілегің қабыл болсын, жаным! ✨</p>
+    </section>
+
+    <section class="card letter reveal locked" id="letter">
+      <div class="greeting">Жаным Зәуре,</div>
+      <p>Бүгін — менің өміріме нұр сыйлаған ең қымбат жанның дүниеге келген күні. Алла Тағала сені маған жар етіп бергені үшін әр күні <em>шүкір</em> етемін.</p>
+      <p>Сен — үйіміздің жылуы, жүрегімнің тыныштығы, ең жақын досым әрі сенімді сырласымсың. Сенің күлкің — менің ең сүйікті әуенім, ал көзіңдегі мейірім — менің бақытым.</p>
+      <p>Жаңа жасың құтты болсын! Алла саған зор денсаулық, ұзақ әрі берекелі ғұмыр, жүрегіңе тыныштық, иманыңа беріктік берсін. Әр арманың орындалып, жүзіңнен күлкі кетпесін.</p>
+      <div class="divider" aria-hidden="true">♥</div>
+      <div class="love-line">Сені шексіз жақсы көремін!</div>
+    </section>
+
+    <section class="card reveal locked" id="wishesCard">
+      <h2 class="section-title">Саған тілегім</h2>
+      <div class="wishes">
+        <div class="wish"><span class="icon">🌸</span><span class="text">Денсаулығың әрдайым мықты болсын</span></div>
+        <div class="wish"><span class="icon">🤲</span><span class="text">Иманың берік, дұғаң қабыл болсын</span></div>
+        <div class="wish"><span class="icon">💛</span><span class="text">Жүрегің әрдайым қуанышқа толсын</span></div>
+        <div class="wish"><span class="icon">🏡</span><span class="text">Шаңырағымыз берекеге толсын</span></div>
+        <div class="wish"><span class="icon">✨</span><span class="text">Әр арманың орындалсын</span></div>
+        <div class="wish"><span class="icon">🌙</span><span class="text">Екі дүниенің бақытын Алла нәсіп етсін</span></div>
+      </div>
+    </section>
+
+    <section class="signature reveal locked" id="signature">
+      <span class="heart" aria-hidden="true">❤</span>
+      <div class="from">Сені шексіз сүйетін күйеуің<small>Туған күніңмен, жаным! 🎉</small></div>
+      <button class="btn gold final-btn" id="partyBtn" type="button">🎉 Тағы шашу шашу</button>
+    </section>
+  </main>
+
+<script>
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const confettiColors = ["#ff6f98", "#f7c873", "#ffffff", "#ffb3c7", "#ffe3a8", "#c9a7ff"];
+
+  function rand(min, max) { return min + Math.random() * (max - min); }
+
+  // Жұлдыздар
+  const sky = document.getElementById("sky");
+  const starCount = window.innerWidth < 500 ? 45 : 80;
+  for (let i = 0; i < starCount; i++) {
+    const star = document.createElement("span");
+    star.className = "star";
+    const size = rand(1, 2.8);
+    star.style.width = star.style.height = size + "px";
+    star.style.left = rand(0, 100) + "vw";
+    star.style.top = rand(0, 100) + "vh";
+    star.style.animationDuration = rand(2, 5).toFixed(2) + "s";
+    star.style.animationDelay = (-rand(0, 5)).toFixed(2) + "s";
+    sky.appendChild(star);
+  }
+
+  // Шарлар
+  if (!reduceMotion) {
+    const balloons = document.getElementById("balloons");
+    const balloonColors = ["#ff6f98", "#f7c873", "#ffb3c7", "#c9a7ff", "#ff9a8b"];
+    const count = window.innerWidth < 500 ? 7 : 11;
+    for (let i = 0; i < count; i++) {
+      const balloon = document.createElement("div");
+      balloon.className = "balloon";
+      balloon.innerHTML = "<span></span>";
+      const color = balloonColors[i % balloonColors.length];
+      balloon.style.background = color;
+      balloon.style.borderBottomColor = color;
+      balloon.style.left = rand(2, 92) + "vw";
+      const scale = rand(0.7, 1.15);
+      balloon.style.width = (54 * scale).toFixed(0) + "px";
+      balloon.style.height = (68 * scale).toFixed(0) + "px";
+      balloon.style.animationDuration = rand(14, 24).toFixed(1) + "s";
+      balloon.style.animationDelay = (-rand(0, 24)).toFixed(1) + "s";
+      balloons.appendChild(balloon);
+    }
+  }
+
+  function burstConfetti(count) {
+    if (reduceMotion) return;
+    for (let i = 0; i < count; i++) {
+      const piece = document.createElement("span");
+      piece.className = "confetti";
+      piece.style.left = rand(0, 100) + "vw";
+      piece.style.background = confettiColors[i % confettiColors.length];
+      piece.style.borderRadius = Math.random() > 0.5 ? "50%" : "2px";
+      piece.style.setProperty("--dx", rand(-90, 90).toFixed(0) + "px");
+      piece.style.setProperty("--rot", rand(-720, 720).toFixed(0) + "deg");
+      piece.style.animationDuration = rand(2, 3.8).toFixed(2) + "s";
+      piece.style.animationDelay = rand(0, 0.35).toFixed(2) + "s";
+      document.body.appendChild(piece);
+      piece.addEventListener("animationend", () => piece.remove());
+    }
+  }
+
+  function floatHearts(x, y, count) {
+    if (reduceMotion) return;
+    for (let i = 0; i < count; i++) {
+      const heart = document.createElement("span");
+      heart.className = "float-heart";
+      heart.textContent = "♥";
+      heart.style.left = x + "px";
+      heart.style.top = y + "px";
+      heart.style.fontSize = rand(16, 30).toFixed(0) + "px";
+      heart.style.setProperty("--dx", rand(-50, 50).toFixed(0) + "px");
+      heart.style.animationDelay = (i * 70) + "ms";
+      document.body.appendChild(heart);
+      heart.addEventListener("animationend", () => heart.remove());
+    }
+  }
+
+  // Айналдырғанда пайда болу
+  const observer = new IntersectionObserver((entries) => {
+    for (const entry of entries) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
+      }
+    }
+  }, { threshold: 0.15 });
+  document.querySelectorAll(".reveal:not(.locked)").forEach(el => observer.observe(el));
+
+  // Шырақтарды үрлеу
+  const cake = document.getElementById("cakeEl");
+  const blowBtn = document.getElementById("blowBtn");
+  const wishMade = document.getElementById("wishMade");
+  let blown = false;
+
+  function blowCandles() {
+    if (blown) return;
+    blown = true;
+    cake.classList.add("out");
+    blowBtn.hidden = true;
+    wishMade.hidden = false;
+    burstConfetti(110);
+
+    const hidden = ["letter", "wishesCard", "signature"].map(id => document.getElementById(id));
+    hidden.forEach((el, i) => {
+      setTimeout(() => {
+        el.classList.remove("locked");
+        observer.observe(el);
+        if (i === 0) {
+          setTimeout(() => el.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" }), 250);
+        }
+      }, 900 + i * 150);
+    });
+  }
+
+  blowBtn.addEventListener("click", blowCandles);
+  cake.addEventListener("click", blowCandles);
+  cake.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      blowCandles();
+    }
+  });
+
+  document.getElementById("partyBtn").addEventListener("click", (event) => {
+    event.stopPropagation();
+    burstConfetti(140);
+    const rect = event.currentTarget.getBoundingClientRect();
+    floatHearts(rect.left + rect.width / 2, rect.top, 6);
+  });
+
+  document.addEventListener("pointerdown", (event) => {
+    if (event.target.closest("button, .cake, a")) return;
+    floatHearts(event.clientX, event.clientY, 4);
+  });
+
+  window.addEventListener("load", () => setTimeout(() => burstConfetti(70), 400));
+</script>
+</body>
+</html>
